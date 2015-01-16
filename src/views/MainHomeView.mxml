@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Heyzap Flex Example App">
+	<fx:Script>
+		<![CDATA[
+			import com.heyzap.sdk.HeyzapEvent;
+			import com.heyzap.sdk.ads.HeyzapAds;
+			import com.heyzap.sdk.ads.IncentivizedAd;
+			import com.heyzap.sdk.ads.InterstitialAd;
+			import com.heyzap.sdk.ads.VideoAd;
+			
+			// This is using Heyzap's test publisher ID. For testing, try it with your own publisher ID.
+			HeyzapAds.getInstance().start("c715bb27ab0ed8abed0f9081c2f3a934", HeyzapAds.FLAG_NONE);
+			
+			// Example Callbacks
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Interstitial is Available");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Interstitial Did Show");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
+				trace("~> Hezyap Interstitial Fetch Failed");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Interstitial Failed to Show");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Interstitial Hidden");
+				return null;
+			});
+			
+			// Examples for callbacks on video only ad unit. You can use all the same callbacks for VideoAd as were used
+			// for InterstitialAd.
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:StatusEvent=null) {
+				trace("~> Heyzap Video Is Available");
+				return null;
+			});
+			
+			// IncentivizedAd has two additional callbacks: HeyzapEvent.IS_COMPLETED, and HeyzapEvent.IS_INCOMPLETE
+			// which indicate if the user finished the video. These events are commonly used in association with
+			// a reward given to the user at the end of completing an ad.
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_COMPLETED, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Incentivized Ad Complete");
+				return null;					
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_INCOMPLETE, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Incentivized Ad Incomplete");
+				return null;					
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
+				trace("~> Heyzap Incentivized Ad is Available");
+				return null;
+			});
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Button click="InterstitialAd.getInstance().show();" y="0" width="150" height="50">Interstitial</s:Button>
+	
+	<s:Button click="InterstitialAd.getInstance().fetch();" x="150" y="0" width="150" height="50">Fetch Interstitial</s:Button>
+	
+	<s:Button click="VideoAd.getInstance().show();" y="250" width="150" height="50">Video</s:Button>
+	
+	<s:Button click="VideoAd.getInstance().fetch();" x="150" y="250" width="150" height="50">Video Fetch</s:Button>
+	
+	<s:Button click="IncentivizedAd.getInstance().show();" y="450" width="150" height="50">Incentivized</s:Button>
+	
+	<s:Button click="IncentivizedAd.getInstance().fetch();" x="150" y="450" width="150" height="50">Incentivized Fetch</s:Button>
+</s:View>
