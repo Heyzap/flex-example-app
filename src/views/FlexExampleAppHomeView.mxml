@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" title="Heyzap Test Application" creationComplete="creationCompleteHandler(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import com.heyzap.sdk.HeyzapEvent;
+			import com.heyzap.sdk.ads.BannerAd;
+			import com.heyzap.sdk.ads.HeyzapAds;
+			import com.heyzap.sdk.ads.IncentivizedAd;
+			import com.heyzap.sdk.ads.InterstitialAd;
+			import com.heyzap.sdk.ads.VideoAd;
+
+			protected function creationCompleteHandler(event:FlexEvent):void
+			{
+				HeyzapAds.getInstance().start("<APP_ID>", HeyzapAds.FLAG_NONE);
+				trace("Heyzap started");
+			}
+			
+			// INTERSTITIAL CALLBACKS
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] DID_SHOW");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] DID_CLICK");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] DID_HIDE");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] DID_FAIL");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] IS_AVAILABLE");
+				return null;					
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] FETCH_FAILED");
+				return null;					
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] ON_AUDIO_STARTED");
+				return null;
+			});
+			
+			InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
+				trace("[INTERSTITIAL] ON_AUDIO_FINISHED");
+				return null;
+			});
+			
+			// BANNER AD CALLBACKS
+			BannerAd.getInstance().addEventListener(HeyzapEvent.ON_LOADED, function(event:Event=null){
+				trace("[BANNER] ON_LOADED");
+				return null;
+			});
+			
+			BannerAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:Event=null) {
+				trace("[BANNER] DID_CLICK");
+				return null;
+			});
+			
+			BannerAd.getInstance().addEventListener(HeyzapEvent.ON_ERROR, function(event:Event=null) {
+				trace("[BANNER] ON_ERROR");
+				return null;
+			});
+			
+			// VIDEO CALLBACKS
+			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] DID_SHOW");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] DID_CLICK");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] DID_HIDE");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] DID_FAIL");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] IS_AVAILABLE");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] FETCH_FAILED");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] ON_AUDIO_STARTED");
+				return null;
+			});
+			
+			VideoAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
+				trace("[VIDEO] ON_AUDIO_FINISHED");
+				return null;
+			});
+			
+			// INCENTIVIZED CALLBACKS
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] DID_SHOW");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] DID_CLICK");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] DID_HIDE");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] DID_FAIL");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] IS_AVAILABLE");
+				if (IncentivizedAd.getInstance().isAvailable()) {
+					trace("Incentivized Ad is available.");
+				} else {
+					trace("Incentivized Ad is not available");
+				}
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] FETCH_FAILED");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_COMPLETED, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] IS_COMPLETED");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_INCOMPLETE, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] IS_INCOMPLETE");
+				return null;
+			});
+			
+		]]>
+	</fx:Script>
+	
+	<s:Button click="InterstitialAd.getInstance().fetch();" x="0" y="0" width="150" height="50">Fetch Inter</s:Button>
+	<s:Button click="InterstitialAd.getInstance().show();" x="150" y="0" width="150" height="50">Show Inter</s:Button>
+	
+	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_BOTTOM);" x="0" y="50" width="150" height="50">Show Banner</s:Button>
+	<s:Button click="BannerAd.getInstance().hide();" x="150" y="50" width="150" height="50">Hide Banner</s:Button>
+	
+	<s:Button click="VideoAd.getInstance().fetch();" x="0" y="100" width="150" height="50">Fetch Video</s:Button>
+	<s:Button click="VideoAd.getInstance().show();" x="150" y="100" width="150" height="50">Show Video</s:Button>
+	
+	<s:Button click="IncentivizedAd.getInstance().fetch()" x="0" y="150" width="150" height="50">Fetch Incent</s:Button>
+	<s:Button click="IncentivizedAd.getInstance().show()" x="150" y="150" width="150" height="50">Show Incent</s:Button>
+	
+	<s:Button click="HeyzapAds.getInstance().showMediationTestSuite();" x="0" y="210" width="150" height="50">Mediation Test</s:Button>
+	
+</s:View>
