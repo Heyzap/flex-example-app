@@ -1,5 +1,7 @@
 # Adobe Flex Example App
 
+Heyzap SDK Version: 9.0
+
 ## Setting up the project
 1. Open Adobe Flash Builder. Click File > Import, and select _Existing Project into Workspace_ under the _General_ dropdown. In the next dialog, choose the root directory of this respository, and click _Finish_
 2. Right-click on the project in the Package Explorer and select _Properties_
@@ -10,6 +12,15 @@
 7. Change your _AppId_ to the one that is used for your app on your [developer dashboard](https://developers.heyzap.com/dashboard) (e.g. `com.example.app`)
 8. Click _Apply_ and then _OK_. You can repeat steps 4-8 to create another Run/Debug configuration for another platform.
 9. In `views/FlexExampleAppHomeView.mxml`, change "\<APP_ID\>" in the `creationCompleteHandler` method to your Heyzap publisher ID.
+
+### Updating the Heyzap SDK
+To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air), extract the ZIP file, and replace `libs/HeyzapAds.ane` with the newer version.
+
+#### Changing the Heyzap SDK path in the project
+1. Right-click on the project on the Package Explorer and select _Properties_
+2. In the Project Properties window, select _Flex Build Path_ on the side bar.
+3. Under the _Native Extensions_ tab, highlight `HeyzapAds.ane - libs` and select the _Remove_ button.
+4. Select the _Add ANE..._ button and choose the path to your copy of `HeyzapAds.ane`.
 
 ### iOS Setup
 
