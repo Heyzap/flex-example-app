@@ -1,6 +1,6 @@
 # Adobe Flex Example App
 
-Heyzap SDK Version: 9.0
+Heyzap SDK Version: 9.0.6
 
 ## Setting up the project
 1. Open Adobe Flash Builder. Click File > Import, and select _Existing Project into Workspace_ under the _General_ dropdown. In the next dialog, choose the root directory of this respository, and click _Finish_
