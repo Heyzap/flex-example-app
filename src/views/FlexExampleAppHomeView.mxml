@@ -14,7 +14,7 @@
 			import com.heyzap.sdk.ads.IncentivizedAd;
 			import com.heyzap.sdk.ads.InterstitialAd;
 			import com.heyzap.sdk.ads.VideoAd;
-
+			
 			protected function creationCompleteHandler(event:FlexEvent):void
 			{
 				HeyzapAds.getInstance().start("<APP_ID>", HeyzapAds.FLAG_NONE);
@@ -44,12 +44,12 @@
 			
 			InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
 				trace("[INTERSTITIAL] IS_AVAILABLE");
-				return null;					
+				return null;
 			});
 			
 			InterstitialAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
 				trace("[INTERSTITIAL] FETCH_FAILED");
-				return null;					
+				return null;
 			});
 			
 			InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
@@ -65,6 +65,12 @@
 			// BANNER AD CALLBACKS
 			BannerAd.getInstance().addEventListener(HeyzapEvent.ON_LOADED, function(event:Event=null){
 				trace("[BANNER] ON_LOADED");
+				var dim:Rectangle = BannerAd.getInstance().dimensions();
+				if (dim != null) {
+					trace("Banner ad dimensions: x=" + dim.x + " y=" + dim.y + " width=" + dim.width + " height=" + dim.height);
+				} else {
+					trace("Could not get banner ad dimensions.");
+				}
 				return null;
 			});
 			
@@ -140,6 +146,16 @@
 				return null;
 			});
 			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] ON_AUDIO_STARTED");
+				return null;
+			});
+			
+			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
+				trace("[INCENTIVIZED] ON_AUDIO_FINISHED");
+				return null;
+			});
+			
 			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
 				trace("[INCENTIVIZED] IS_AVAILABLE");
 				if (IncentivizedAd.getInstance().isAvailable()) {
@@ -171,15 +187,18 @@
 	<s:Button click="InterstitialAd.getInstance().fetch();" x="0" y="0" width="150" height="50">Fetch Inter</s:Button>
 	<s:Button click="InterstitialAd.getInstance().show();" x="150" y="0" width="150" height="50">Show Inter</s:Button>
 	
-	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_BOTTOM);" x="0" y="50" width="150" height="50">Show Banner</s:Button>
-	<s:Button click="BannerAd.getInstance().hide();" x="150" y="50" width="150" height="50">Hide Banner</s:Button>
+	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_TOP);" x="0" y="50" width="150" height="50">Show Banner Top</s:Button>
+	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_BOTTOM);" x="150" y="50" width="180" height="50">Show Banner Bottom</s:Button>
 	
-	<s:Button click="VideoAd.getInstance().fetch();" x="0" y="100" width="150" height="50">Fetch Video</s:Button>
-	<s:Button click="VideoAd.getInstance().show();" x="150" y="100" width="150" height="50">Show Video</s:Button>
+	<s:Button click="BannerAd.getInstance().hide();" x="0" y="100" width="150" height="50">Hide Banner</s:Button>
+	<s:Button click="BannerAd.getInstance().destroy();" x="150" y="100" width="150" height="50">Destroy Banner</s:Button>
 	
-	<s:Button click="IncentivizedAd.getInstance().fetch()" x="0" y="150" width="150" height="50">Fetch Incent</s:Button>
-	<s:Button click="IncentivizedAd.getInstance().show()" x="150" y="150" width="150" height="50">Show Incent</s:Button>
+	<s:Button click="VideoAd.getInstance().fetch();" x="0" y="150" width="150" height="50">Fetch Video</s:Button>
+	<s:Button click="VideoAd.getInstance().show();" x="150" y="150" width="150" height="50">Show Video</s:Button>
 	
-	<s:Button click="HeyzapAds.getInstance().showMediationTestSuite();" x="0" y="210" width="150" height="50">Mediation Test</s:Button>
+	<s:Button click="IncentivizedAd.getInstance().fetch()" x="0" y="200" width="150" height="50">Fetch Incent</s:Button>
+	<s:Button click="IncentivizedAd.getInstance().show()" x="150" y="200" width="150" height="50">Show Incent</s:Button>
+	
+	<s:Button click="HeyzapAds.getInstance().showMediationTestSuite();" x="0" y="260" width="150" height="50">Mediation Test</s:Button>
 	
 </s:View>
