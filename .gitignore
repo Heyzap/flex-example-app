@@ -6,3 +6,6 @@ bin-release/
 
 # Mac OS
 *.DS_Store
+
+.idea
+*.iml

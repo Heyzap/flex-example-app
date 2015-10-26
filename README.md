@@ -1,43 +1,54 @@
 # Adobe Flex Example App
 
-Heyzap SDK Version: 9.0.6
+## Libraries
+
+Please use the latest versions of libraries in your project. You can find them here:
+https://developers.heyzap.com/docs/ane_setup_and_requirements
+
+Current project is using the following libs:
+Heyzap SDK 9.2.4
+
+AdColony SDK 2.0.9
+AdMob SDK 7.4.1
+AppLovin SDK 1.0.10
+Chartboost IOS SDK 5.5.3
+Chartboost Android SDK 5.5.3
+Facebook Audience Network SDK 4.3.0
+UnityAds SDK 1.4.5
+Vungle IOS SDK 3.1.0
+Vungle Android SDK 3.3.0
+
+To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air),
+extract the ZIP file, and replace `libs/HeyzapAds.ane` with the newer version. Do the same for all other libraries included in the project.
+
+## How to work with this project
+
+Use this project if you want to test Heyzap API with different AD networks.
+Setup libraries including in project according to the platform you test on.
+
+libs/ dir contains common libraries you should use on IOS or Android.
+ios-libs/ dir contains libraries you should use only on IOS.
+android-libs/ dir contains libraries you should use only on Android.
+
+Setup the project, add needed libraries, connect your device and run it.
 
 ## Setting up the project
-1. Open Adobe Flash Builder. Click File > Import, and select _Existing Project into Workspace_ under the _General_ dropdown. In the next dialog, choose the root directory of this respository, and click _Finish_
-2. Right-click on the project in the Package Explorer and select _Properties_
-3. In the project properties window, select _Flex Build Packaging_. For both Android and iOS, make sure that the `Heyzap.ane` extension is selected for packaging under the _Native Extensions_ tab.
-4. Under _Run/Debug Settings_ in the project properties window, click "New..." to create a new run configuration and select "Mobile Application" and click _OK_
-5. From the _Target platform_ dropdown select which platform you wish to build this app for (iOS or Android)
-6. Choose _On device_ as the launch method.
-7. Change your _AppId_ to the one that is used for your app on your [developer dashboard](https://developers.heyzap.com/dashboard) (e.g. `com.example.app`)
-8. Click _Apply_ and then _OK_. You can repeat steps 4-8 to create another Run/Debug configuration for another platform.
-9. In `views/FlexExampleAppHomeView.mxml`, change "\<APP_ID\>" in the `creationCompleteHandler` method to your Heyzap publisher ID.
 
-### Updating the Heyzap SDK
-To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air), extract the ZIP file, and replace `libs/HeyzapAds.ane` with the newer version.
-
-#### Changing the Heyzap SDK path in the project
-1. Right-click on the project on the Package Explorer and select _Properties_
-2. In the Project Properties window, select _Flex Build Path_ on the side bar.
-3. Under the _Native Extensions_ tab, highlight `HeyzapAds.ane - libs` and select the _Remove_ button.
-4. Select the _Add ANE..._ button and choose the path to your copy of `HeyzapAds.ane`.
-
-### iOS Setup
-
-#### Exporting your Apple Certificate and its Private Key
-1. Follow instructions on the [Apple Developer Site](https://developer.apple.com) to get an Apple Developer Certificate and Provisioning Profile and import the certificate into XCode.
-1. Open the Keychain Access app and select _My Certificates_
-2. Select your Apple Developer certificate and click on the dropdown on the right to view it's private key
-3. Right click (or ctrl+click) on the private key and choose "Export …"
-4. Enter in a password for your key and save it somewhere in your file system.
-
-#### Setting up on Flash Builder 
-1. In the project properties window, select _Flex Build Packaging_ and then _Apple iOS_.
-2. Fill in the path to your Apple iOS Developer certificate and Provisioning file in the _Digital Signature_ tab.
-3. Under the _Native Extensions_ tab enter in the full path to the Apple iOS SDK on your mac (the default path should be: `/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk`)
-4. Click _Apply_ and then _OK_.
+1 Import project to your IDE as Flex project.
+2 Select Adobe Air+Flex SDK. Application was tested with Flex 4.6 and Adobe Air 17.
+3 Set application descriptor to flex-example-app-ios.xml for IOS or flex-example-app-android.xml for Android (located in src/ folder)/
+6 Set "FlexExampleApp" as main mxml file.
+7 Add all splash screen files located under src ( with .png extensions ) to IOS package files ( for IOS platform only ). 
+These files should be places to packege under the root directory. Don't use subfolders here.
+8 Setup platform specific settings ( certificates, keys etc ).
+9 Compile and run!
 
 ## Running
 Plug in a compatible android or iOS device, right-click on the project in the Package Explorer, then select _Run As_/_Debug As_ and choose your run/debug configuration from the submenu.
 
+
 Further information on the Heyzap SDK can be found at https://developers.heyzap.com/docs/ane_setup_and_requirements
+
+## Known problems
+
+- Compilation failed while executing : ld64. Read here: https://forums.adobe.com/thread/1686169
