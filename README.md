@@ -1,5 +1,7 @@
 # Adobe Flex Example App
 
+Android apk file with all networks enabled can be found in bin folder.
+
 ## Libraries
 
 Please use the latest versions of libraries in your project. You can find them here:
@@ -38,8 +40,10 @@ Setup the project, add needed libraries, connect your device and run it.
 2 Select Adobe Air+Flex SDK. Application was tested with Flex 4.6 and Adobe Air 17.
 3 Set application descriptor to flex-example-app-ios.xml for IOS or flex-example-app-android.xml for Android (located in src/ folder)/
 6 Set "FlexExampleApp" as main mxml file.
+7 Add libraries to the project. Common libraries are located under libs/ folder. For IOS platform add libaries from android-libs/ folder, for Android
+add all libraries from android-libs/ folder.
 7 Add all splash screen files located under src ( with .png extensions ) to IOS package files ( for IOS platform only ). 
-These files should be places to packege under the root directory. Don't use subfolders here.
+These files should be places to package under the root directory. Don't use subfolders here.
 8 Setup platform specific settings ( certificates, keys etc ).
 9 Compile and run!
 
@@ -52,3 +56,11 @@ Further information on the Heyzap SDK can be found at https://developers.heyzap.
 ## Known problems
 
 - Compilation failed while executing : ld64. Read here: https://forums.adobe.com/thread/1686169
+
+- Conflicts with libraries. If you have selected google-play-services.ane don't add any additional
+libraries like com.vungle.extensions.android.GooglePlayServices.ane. You can have only 1 instance of the same library.
+Libraries like FacebookAudienceNetwork.ane has internal library android-support-v4.jar 
+
+- Error java.lang.OutOfMemoryError: GC overhead limit exceeded. Increase memory for java in Adobe Air/Flex framework. 
+open jvm.config and set java.args=-Xmx1024m -Xms512m -Dsun.io.useCanonCaches=false
+

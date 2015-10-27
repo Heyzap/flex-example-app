@@ -45,7 +45,7 @@
 
         private function onShowButtonClick():void {
             if (currentActionObject instanceof  BannerAd) {
-                currentActionObject.show(BannerAd.POSITION_TOP,getEnteredAdTagOrNull()); //todo add position
+                currentActionObject.show(BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull()); //todo add position
                 appModel.bannerIsShown = true;
             } else {
                 currentActionObject.show(getEnteredAdTagOrNull());

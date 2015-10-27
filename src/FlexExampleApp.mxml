@@ -20,7 +20,7 @@
 
         protected function onCreationComplete():void {
 
-            HeyzapAds.getInstance().start("<APP_ID>", HeyzapAds.FLAG_NONE);
+            HeyzapAds.getInstance().start("9317e0b9c4eaf41ed68e907e22ab3c5a", HeyzapAds.FLAG_NONE);
             trace("Heyzap started");
         }
         ]]>
