@@ -1,6 +1,5 @@
 # Project build and release directories
 target/
-bin/
 bin-debug/
 bin-release/
 
