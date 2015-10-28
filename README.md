@@ -59,8 +59,9 @@ Further information on the Heyzap SDK can be found at https://developers.heyzap.
 - Compilation failed while executing : ld64. Read here: https://forums.adobe.com/thread/1686169
 
 - Conflicts with libraries. If you have selected google-play-services.ane don't add any additional
-libraries like com.vungle.extensions.android.GooglePlayServices.ane. You can have only 1 instance of the same library.
-Libraries like FacebookAudienceNetwork.ane has internal library android-support-v4.jar 
+libraries like com.vungle.extensions.android.GooglePlayServices.ane. We use Vungle's GooglePlayServices.ane to avoid conflicts.
+Internal java libraries can confict too like android-support-v4.jar which is present in Facebook.ane and Vungle's AndroidSupportLib.ane. We have repacked original
+Facebook.ane and moved it to android-libs/ folder to avoid conflicts. In this case original Facebook ANE is using for iOS project.
 
 - Error java.lang.OutOfMemoryError: GC overhead limit exceeded. Increase memory for java in Adobe Air/Flex framework. 
 open jvm.config and set java.args=-Xmx1024m -Xms512m -Dsun.io.useCanonCaches=false
