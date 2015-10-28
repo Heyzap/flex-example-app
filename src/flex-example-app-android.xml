@@ -16,15 +16,9 @@
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>
 
-
         <extensionID>com.vungle.extensions.android.AndroidSupportLib</extensionID>
         <extensionID>com.vungle.extensions.android.GooglePlayServices</extensionID>
         <extensionID>com.vungle.extensions.Vungle</extensionID>
-
-
-
-
-
 
     </extensions>
 
@@ -72,6 +66,7 @@
 					<activity android:name="com.heyzap.sdk.ads.HeyzapInterstitialActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapProxyActivity" />
+					<activity android:name="com.heyzap.sdk.ads.VASTActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 
                     <activity android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" />
