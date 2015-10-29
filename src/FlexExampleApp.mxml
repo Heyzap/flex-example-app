@@ -20,7 +20,11 @@
 
         protected function onCreationComplete():void {
 
-            HeyzapAds.getInstance().start("9317e0b9c4eaf41ed68e907e22ab3c5a", HeyzapAds.FLAG_NONE);
+
+
+            //we disable automatic fetch here
+            //to get fetch buttons working for every feature
+            HeyzapAds.getInstance().start("9317e0b9c4eaf41ed68e907e22ab3c5a", HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH);
             trace("Heyzap started");
         }
         ]]>

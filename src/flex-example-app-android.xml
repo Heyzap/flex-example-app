@@ -10,8 +10,6 @@
         <extensionID>com.heyzap.sdk.extensions.unityads</extensionID>
         <extensionID>com.heyzap.sdk.extensions.facebook.audiencenetwork</extensionID>
 
-        <!--extensionID>com.pozirk.ads.AdMob</extensionID-->
-
         <extensionID>com.jirbo.airadc.AirAdColony</extensionID>
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark"
-        xmlns:components="views.components.*"
+        xmlns:components="views.components.*" xmlns:mx="library://ns.adobe.com/flex/spark"
         title="Heyzap Test Application"
         creationComplete="onCreationComplete()"
         >
+
+    <fx:Style>
+        @namespace s "library://ns.adobe.com/flex/spark";
+
+    </fx:Style>
 
     <fx:Script>
 		<![CDATA[
@@ -30,8 +35,11 @@
         }
 
         private function getEnteredAdTagOrNull():String{
-            if (!adTagTextInput.text) return null;
-            else return adTagTextInput.text;
+            return adTagTextInput.text?adTagTextInput.text:null;
+        }
+
+        private function getCustomInfoOrNull():String{
+            return adTagTextInput.text?adTagTextInput.text:null;
         }
 
         private function onFetchButtonClick():void {
@@ -44,10 +52,12 @@
         }
 
         private function onShowButtonClick():void {
-            if (currentActionObject instanceof  BannerAd) {
-                currentActionObject.show(BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull()); //todo add position
+            if (currentActionObject is  BannerAd) {
+                currentActionObject.show(bannerPositionTopRadioButton.selected?BannerAd.POSITION_TOP:BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull());
                 appModel.bannerIsShown = true;
-            } else {
+            } else if (currentActionObject is  IncentivizedAd) {
+                (currentActionObject as IncentivizedAd).show(getEnteredAdTagOrNull(),getCustomInfoOrNull());
+            }else {
                 currentActionObject.show(getEnteredAdTagOrNull());
             }
         }
@@ -62,14 +72,19 @@
             availableButton.enabled = true;
         }
 
+        //in case we have banner shown we need to hide it before
         private function onActionTypeGroupSelectionChange(event:Event):void {
             enableAllButtons();
 
+
             if (interstitialRadioButton.selected) {
+                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = InterstitialAd.getInstance();
             } else if (incentivizedRadioButton.selected) {
+                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = IncentivizedAd.getInstance();
             } else if (videoRadioButton.selected) {
+                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = VideoAd.getInstance();
             } else if (bannerRadioButton.selected) {
                 currentActionObject = BannerAd.getInstance();
@@ -77,12 +92,25 @@
                 availableButton.enabled = false;
             }
         }
+
+        private function onBannerPositionGroupSelectionChange(event:Event):void {
+            if (showButton.visible) return;
+
+            onHideButtonClick();
+            BannerAd.getInstance().destroy();
+            onShowButtonClick();
+        }
+
         ]]>
 	</fx:Script>
 
     <fx:Declarations>
         <s:RadioButtonGroup id="actionTypeRadioButtonGroup"
                             change="onActionTypeGroupSelectionChange(event)"/>
+
+        <s:RadioButtonGroup id="bannerPositionButtonGroup"
+                            change="onBannerPositionGroupSelectionChange(event)"/>
+
     </fx:Declarations>
 
 
@@ -94,17 +122,30 @@
             <s:Button label="Mediation Test Suite"
                       click="HeyzapAds.getInstance().showMediationTestSuite();"/>
 
-            <s:TileGroup width="100%" rowAlign="justifyUsingHeight">
                 <s:RadioButton id="interstitialRadioButton" label="Interstitial" group="{actionTypeRadioButtonGroup}" selected="true" />
                 <s:RadioButton id="videoRadioButton" label="Video" group="{actionTypeRadioButtonGroup}"/>
                 <s:RadioButton id="incentivizedRadioButton" label="Incentivized" group="{actionTypeRadioButtonGroup}"/>
                 <s:RadioButton id="bannerRadioButton" label="Banner" group="{actionTypeRadioButtonGroup}"/>
-            </s:TileGroup>
+
+                <s:HGroup verticalAlign="middle"
+                          visible="{bannerRadioButton.selected}" includeInLayout="{bannerRadioButton.selected}">
+                    <s:Label text="Banner Position:"/>
+
+                    <s:RadioButton id="bannerPositionTopRadioButton" label="Top" group="{bannerPositionButtonGroup}" selected="true"/>
+                    <s:RadioButton label="Bottom" group="{bannerPositionButtonGroup}"/>
+                </s:HGroup>
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Ad tag:"/>
                 <s:TextInput id="adTagTextInput" width="60%"/>
             </s:HGroup>
+
+            <s:HGroup id="customInfoGroup" width="100%" verticalAlign="middle"
+                    visible="{incentivizedRadioButton.selected}" includeInLayout="{incentivizedRadioButton.selected}">
+                <s:Label text="Custom info:"/>
+                <s:TextInput id="customInfoTextInput" width="100%"/>
+            </s:HGroup>
+
             <s:HGroup width="100%">
                 <s:Button id="fetchButton" label="Fetch" click="onFetchButtonClick()"/>
                 <s:Group>
@@ -114,13 +155,10 @@
                 <s:Button id="availableButton" label="Available?" click="onAvailableButtonClick()"/>
             </s:HGroup>
 
-            <s:CheckBox id="showLogsCheckBox" label="Show debug logs" selected="@{appModel.showLogs}"/>
+            <!--s:CheckBox id="showLogsCheckBox" label="Show debug logs" selected="@{appModel.showLogs}"/-->
 
-            <s:BorderContainer width="100%" height="40%" minHeight="200"
-                               visible="{logConsole.visible}" includeInLayout="{logConsole.visible}">
-                <components:LogConsole id="logConsole" width="100%" height="100%"
-                                       visible="{appModel.showLogs}" includeInLayout="{appModel.showLogs}"
-                        />
+            <s:BorderContainer width="100%" height="100%" minHeight="400"  >
+                <components:LogConsole id="logConsole" width="100%" height="100%" />
             </s:BorderContainer>
 
 

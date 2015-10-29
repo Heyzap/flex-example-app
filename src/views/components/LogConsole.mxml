@@ -2,11 +2,16 @@
 <s:List xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark"
         dataProvider="{logLines}"
-        show="onAdded()"
+        itemRenderer="views.components.LogConsoleItemRenderer"
         creationComplete="onAdded()"
-        hide="onRemoved()"
         contentBackgroundAlpha="0"
         >
+
+    <fx:Declarations>
+        <s:DateTimeFormatter id="dateTimeFormatter" dateTimePattern="h:mm:ss"/>
+    </fx:Declarations>
+
+
     <fx:Script><![CDATA[
         import com.heyzap.sdk.HeyzapEvent;
         import com.heyzap.sdk.ads.BannerAd;
@@ -15,8 +20,10 @@
         import com.heyzap.sdk.ads.VideoAd;
 
         import mx.collections.ArrayCollection;
+        import mx.formatters.DateFormatter;
 
         import spark.core.NavigationUnit;
+        import spark.formatters.DateTimeFormatter;
 
         [Bindable]
         private var logLines:ArrayCollection;
@@ -26,14 +33,8 @@
             setListeners();
         }
 
-        private function onRemoved():void {
-            removeListeners();
-            logLines.removeAll();
-            logLines = null;
-        }
-
         public function showLine(string:String):void {
-            logLines.addItem(string);
+            logLines.addItem(dateTimeFormatter.format(new Date())+":"+string);
             validateNow();
             callLater(ensureIndexIsVisible,[logLines.length-1]);
         }
@@ -146,16 +147,6 @@
 
         private function onIncentivizedAdEvent(event:HeyzapEvent):void {
             showLine("[INCENTIVIZED] " + event.type);
-
-            switch (event.type) {
-                case HeyzapEvent.IS_AVAILABLE:
-                    if (IncentivizedAd.getInstance().isAvailable()) {
-                        showLine("Incentivized Ad is available.");
-                    } else {
-                        showLine("Incentivized Ad is not available");
-                    }
-                    break;
-            }
         }
         ]]></fx:Script>
 
