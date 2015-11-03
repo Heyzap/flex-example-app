@@ -48,6 +48,7 @@
 
         private function onHideButtonClick():void {
             currentActionObject.hide();
+            BannerAd.getInstance().destroy();
             appModel.bannerIsShown = false;
         }
 
@@ -69,6 +70,8 @@
         private function enableAllButtons():void {
             fetchButton.enabled = true;
             showButton.enabled = true;
+            showButton.visible = true;
+            hideButton.visible = false;
             availableButton.enabled = true;
         }
 
@@ -78,27 +81,18 @@
 
 
             if (interstitialRadioButton.selected) {
-                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = InterstitialAd.getInstance();
             } else if (incentivizedRadioButton.selected) {
-                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = IncentivizedAd.getInstance();
             } else if (videoRadioButton.selected) {
-                if (appModel.bannerIsShown ) onHideButtonClick();
                 currentActionObject = VideoAd.getInstance();
             } else if (bannerRadioButton.selected) {
                 currentActionObject = BannerAd.getInstance();
                 fetchButton.enabled = false;
                 availableButton.enabled = false;
+                showButton.visible = !appModel.bannerIsShown;
+                hideButton.visible= !showButton.visible;
             }
-        }
-
-        private function onBannerPositionGroupSelectionChange(event:Event):void {
-            if (showButton.visible) return;
-
-            onHideButtonClick();
-            BannerAd.getInstance().destroy();
-            onShowButtonClick();
         }
 
         ]]>
@@ -107,9 +101,6 @@
     <fx:Declarations>
         <s:RadioButtonGroup id="actionTypeRadioButtonGroup"
                             change="onActionTypeGroupSelectionChange(event)"/>
-
-        <s:RadioButtonGroup id="bannerPositionButtonGroup"
-                            change="onBannerPositionGroupSelectionChange(event)"/>
 
     </fx:Declarations>
 
@@ -131,8 +122,8 @@
                           visible="{bannerRadioButton.selected}" includeInLayout="{bannerRadioButton.selected}">
                     <s:Label text="Banner Position:"/>
 
-                    <s:RadioButton id="bannerPositionTopRadioButton" label="Top" group="{bannerPositionButtonGroup}" selected="true"/>
-                    <s:RadioButton label="Bottom" group="{bannerPositionButtonGroup}"/>
+                    <s:RadioButton id="bannerPositionTopRadioButton" label="Top"  selected="true"/>
+                    <s:RadioButton label="Bottom"/>
                 </s:HGroup>
 
             <s:HGroup width="100%" verticalAlign="middle">

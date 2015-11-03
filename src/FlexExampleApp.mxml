@@ -20,12 +20,9 @@
 
         protected function onCreationComplete():void {
 
-
-
             //we disable automatic fetch here
             //to get fetch buttons working for every feature
-            HeyzapAds.getInstance().start("9317e0b9c4eaf41ed68e907e22ab3c5a", HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH);
-            trace("Heyzap started");
+            HeyzapAds.getInstance().start("<APP_ID>", HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH);
         }
         ]]>
 	</fx:Script>
