@@ -1,204 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" title="Heyzap Test Application" creationComplete="creationCompleteHandler(event)">
-	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
-	</fx:Declarations>
-	
-	<fx:Script>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:components="views.components.*" xmlns:mx="library://ns.adobe.com/flex/spark"
+        title="Heyzap Test Application"
+        creationComplete="onCreationComplete()"
+        >
+
+    <fx:Style>
+        @namespace s "library://ns.adobe.com/flex/spark";
+
+    </fx:Style>
+
+    <fx:Script>
 		<![CDATA[
-			import mx.events.FlexEvent;
-			import com.heyzap.sdk.HeyzapEvent;
-			import com.heyzap.sdk.ads.BannerAd;
-			import com.heyzap.sdk.ads.HeyzapAds;
-			import com.heyzap.sdk.ads.IncentivizedAd;
-			import com.heyzap.sdk.ads.InterstitialAd;
-			import com.heyzap.sdk.ads.VideoAd;
-			
-			protected function creationCompleteHandler(event:FlexEvent):void
-			{
-				HeyzapAds.getInstance().start("<APP_ID>", HeyzapAds.FLAG_NONE);
-				trace("Heyzap started");
-			}
-			
-			// INTERSTITIAL CALLBACKS
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] DID_SHOW");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] DID_CLICK");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] DID_HIDE");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] DID_FAIL");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] IS_AVAILABLE");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] FETCH_FAILED");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] ON_AUDIO_STARTED");
-				return null;
-			});
-			
-			InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
-				trace("[INTERSTITIAL] ON_AUDIO_FINISHED");
-				return null;
-			});
-			
-			// BANNER AD CALLBACKS
-			BannerAd.getInstance().addEventListener(HeyzapEvent.ON_LOADED, function(event:Event=null){
-				trace("[BANNER] ON_LOADED");
-				var dim:Rectangle = BannerAd.getInstance().dimensions();
-				if (dim != null) {
-					trace("Banner ad dimensions: x=" + dim.x + " y=" + dim.y + " width=" + dim.width + " height=" + dim.height);
-				} else {
-					trace("Could not get banner ad dimensions.");
-				}
-				return null;
-			});
-			
-			BannerAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:Event=null) {
-				trace("[BANNER] DID_CLICK");
-				return null;
-			});
-			
-			BannerAd.getInstance().addEventListener(HeyzapEvent.ON_ERROR, function(event:Event=null) {
-				trace("[BANNER] ON_ERROR");
-				return null;
-			});
-			
-			// VIDEO CALLBACKS
-			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] DID_SHOW");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] DID_CLICK");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] DID_HIDE");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] DID_FAIL");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] IS_AVAILABLE");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] FETCH_FAILED");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] ON_AUDIO_STARTED");
-				return null;
-			});
-			
-			VideoAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
-				trace("[VIDEO] ON_AUDIO_FINISHED");
-				return null;
-			});
-			
-			// INCENTIVIZED CALLBACKS
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] DID_SHOW");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] DID_CLICK");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] DID_HIDE");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] DID_FAIL");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] ON_AUDIO_STARTED");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] ON_AUDIO_FINISHED");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] IS_AVAILABLE");
-				if (IncentivizedAd.getInstance().isAvailable()) {
-					trace("Incentivized Ad is available.");
-				} else {
-					trace("Incentivized Ad is not available");
-				}
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.FETCH_FAILED, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] FETCH_FAILED");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_COMPLETED, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] IS_COMPLETED");
-				return null;
-			});
-			
-			IncentivizedAd.getInstance().addEventListener(HeyzapEvent.IS_INCOMPLETE, function(event:HeyzapEvent=null) {
-				trace("[INCENTIVIZED] IS_INCOMPLETE");
-				return null;
-			});
-			
-		]]>
+        import com.heyzap.sdk.ads.BannerAd;
+        import com.heyzap.sdk.ads.HeyzapAds;
+        import com.heyzap.sdk.ads.IncentivizedAd;
+        import com.heyzap.sdk.ads.InterstitialAd;
+        import com.heyzap.sdk.ads.VideoAd;
+
+        import model.AppModel;
+
+        [Bindable]
+        public var appModel:AppModel;
+
+        private var currentActionObject:*;
+
+        override public function set data(value:Object):void {
+            appModel = value as AppModel;
+        }
+
+        private function onCreationComplete():void {
+            currentActionObject = InterstitialAd.getInstance();
+        }
+
+        private function getEnteredAdTagOrNull():String{
+            return adTagTextInput.text?adTagTextInput.text:null;
+        }
+
+        private function getCustomInfoOrNull():String{
+            return adTagTextInput.text?adTagTextInput.text:null;
+        }
+
+        private function onFetchButtonClick():void {
+            currentActionObject.fetch(getEnteredAdTagOrNull());
+        }
+
+        private function onHideButtonClick():void {
+            currentActionObject.hide();
+            BannerAd.getInstance().destroy();
+            appModel.bannerIsShown = false;
+        }
+
+        private function onShowButtonClick():void {
+            if (currentActionObject is  BannerAd) {
+                currentActionObject.show(bannerPositionTopRadioButton.selected?BannerAd.POSITION_TOP:BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull());
+                appModel.bannerIsShown = true;
+            } else if (currentActionObject is  IncentivizedAd) {
+                (currentActionObject as IncentivizedAd).show(getEnteredAdTagOrNull(),getCustomInfoOrNull());
+            }else {
+                currentActionObject.show(getEnteredAdTagOrNull());
+            }
+        }
+
+        private function onAvailableButtonClick():void {
+            logConsole.showLine("Available? result: " + currentActionObject.isAvailable(getEnteredAdTagOrNull()));
+        }
+
+        private function enableAllButtons():void {
+            fetchButton.enabled = true;
+            showButton.enabled = true;
+            showButton.visible = true;
+            hideButton.visible = false;
+            availableButton.enabled = true;
+        }
+
+        //in case we have banner shown we need to hide it before
+        private function onActionTypeGroupSelectionChange(event:Event):void {
+            enableAllButtons();
+
+
+            if (interstitialRadioButton.selected) {
+                currentActionObject = InterstitialAd.getInstance();
+            } else if (incentivizedRadioButton.selected) {
+                currentActionObject = IncentivizedAd.getInstance();
+            } else if (videoRadioButton.selected) {
+                currentActionObject = VideoAd.getInstance();
+            } else if (bannerRadioButton.selected) {
+                currentActionObject = BannerAd.getInstance();
+                fetchButton.enabled = false;
+                availableButton.enabled = false;
+                showButton.visible = !appModel.bannerIsShown;
+                hideButton.visible= !showButton.visible;
+            }
+        }
+
+        ]]>
 	</fx:Script>
-	
-	<s:Button click="InterstitialAd.getInstance().fetch();" x="0" y="0" width="150" height="50">Fetch Inter</s:Button>
-	<s:Button click="InterstitialAd.getInstance().show();" x="150" y="0" width="150" height="50">Show Inter</s:Button>
-	
-	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_TOP);" x="0" y="50" width="150" height="50">Show Banner Top</s:Button>
-	<s:Button click="BannerAd.getInstance().show(BannerAd.POSITION_BOTTOM);" x="150" y="50" width="180" height="50">Show Banner Bottom</s:Button>
-	
-	<s:Button click="BannerAd.getInstance().hide();" x="0" y="100" width="150" height="50">Hide Banner</s:Button>
-	<s:Button click="BannerAd.getInstance().destroy();" x="150" y="100" width="150" height="50">Destroy Banner</s:Button>
-	
-	<s:Button click="VideoAd.getInstance().fetch();" x="0" y="150" width="150" height="50">Fetch Video</s:Button>
-	<s:Button click="VideoAd.getInstance().show();" x="150" y="150" width="150" height="50">Show Video</s:Button>
-	
-	<s:Button click="IncentivizedAd.getInstance().fetch()" x="0" y="200" width="150" height="50">Fetch Incent</s:Button>
-	<s:Button click="IncentivizedAd.getInstance().show()" x="150" y="200" width="150" height="50">Show Incent</s:Button>
-	
-	<s:Button click="HeyzapAds.getInstance().showMediationTestSuite();" x="0" y="260" width="150" height="50">Mediation Test</s:Button>
-	
+
+    <fx:Declarations>
+        <s:RadioButtonGroup id="actionTypeRadioButtonGroup"
+                            change="onActionTypeGroupSelectionChange(event)"/>
+
+    </fx:Declarations>
+
+
+    <s:Scroller width="100%" height="100%">
+        <s:VGroup width="100%" height="100%"
+                  paddingLeft="6" paddingRight="6" paddingBottom="6" paddingTop="6" horizontalAlign="left">
+
+
+            <s:Button label="Mediation Test Suite"
+                      click="HeyzapAds.getInstance().showMediationTestSuite();"/>
+
+                <s:RadioButton id="interstitialRadioButton" label="Interstitial" group="{actionTypeRadioButtonGroup}" selected="true" />
+                <s:RadioButton id="videoRadioButton" label="Video" group="{actionTypeRadioButtonGroup}"/>
+                <s:RadioButton id="incentivizedRadioButton" label="Incentivized" group="{actionTypeRadioButtonGroup}"/>
+                <s:RadioButton id="bannerRadioButton" label="Banner" group="{actionTypeRadioButtonGroup}"/>
+
+                <s:HGroup verticalAlign="middle"
+                          visible="{bannerRadioButton.selected}" includeInLayout="{bannerRadioButton.selected}">
+                    <s:Label text="Banner Position:"/>
+
+                    <s:RadioButton id="bannerPositionTopRadioButton" label="Top"  selected="true"/>
+                    <s:RadioButton label="Bottom"/>
+                </s:HGroup>
+
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Ad tag:"/>
+                <s:TextInput id="adTagTextInput" width="60%"/>
+            </s:HGroup>
+
+            <s:HGroup id="customInfoGroup" width="100%" verticalAlign="middle"
+                    visible="{incentivizedRadioButton.selected}" includeInLayout="{incentivizedRadioButton.selected}">
+                <s:Label text="Custom info:"/>
+                <s:TextInput id="customInfoTextInput" width="100%"/>
+            </s:HGroup>
+
+            <s:HGroup width="100%">
+                <s:Button id="fetchButton" label="Fetch" click="onFetchButtonClick()"/>
+                <s:Group>
+                    <s:Button id="showButton" label="Show" visible="{!appModel.bannerIsShown}" click="onShowButtonClick()"/>
+                    <s:Button id="hideButton" label="Hide" visible="{!showButton.visible}" click="onHideButtonClick()"/>
+                </s:Group>
+                <s:Button id="availableButton" label="Available?" click="onAvailableButtonClick()"/>
+            </s:HGroup>
+
+            <!--s:CheckBox id="showLogsCheckBox" label="Show debug logs" selected="@{appModel.showLogs}"/-->
+
+            <s:BorderContainer width="100%" height="100%" minHeight="400"  >
+                <components:LogConsole id="logConsole" width="100%" height="100%" />
+            </s:BorderContainer>
+
+
+        </s:VGroup>
+    </s:Scroller>
 </s:View>
