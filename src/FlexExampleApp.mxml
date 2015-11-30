@@ -11,7 +11,9 @@
 
 	<fx:Script>
 		<![CDATA[
+        import com.heyzap.sdk.ads.BannerAd;
         import com.heyzap.sdk.ads.HeyzapAds;
+        import com.heyzap.sdk.ads.InterstitialAd;
 
         import model.AppModel;
 
