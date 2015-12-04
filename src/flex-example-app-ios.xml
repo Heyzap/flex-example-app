@@ -6,20 +6,13 @@
     <versionNumber>1.0.0</versionNumber>
     <extensions>
         <extensionID>com.heyzap.sdk.extensions</extensionID>
-
-
         <extensionID>com.vungle.extensions.Vungle</extensionID>
-
-<extensionID>com.heyzap.sdk.extensions.facebook.audiencenetwork</extensionID>
-
+        <extensionID>com.heyzap.sdk.extensions.facebook.audiencenetwork</extensionID>
         <extensionID>com.heyzap.sdk.extensions.admob</extensionID>
         <extensionID>com.heyzap.sdk.extensions.unityads</extensionID>
-
         <extensionID>com.jirbo.airadc.AirAdColony</extensionID>
         <extensionID>com.chartboost.plugin.air</extensionID>
-
         <extensionID>com.applovin.sdk.air</extensionID>
-
         <extensionID>com.inmobi.plugin.adobeair</extensionID>
     </extensions>
 

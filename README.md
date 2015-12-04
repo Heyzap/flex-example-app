@@ -10,7 +10,7 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 
 This sample app project is currently using the following SDK versions:
 
-- Heyzap SDK 9.2.4
+- Heyzap SDK 9.3.0
 - AdColony SDK 2.0.9
 - AdMob SDK 7.4.1
 - AppLovin SDK 1.0.10
