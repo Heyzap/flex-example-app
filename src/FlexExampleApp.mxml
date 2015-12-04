@@ -9,7 +9,7 @@
         firstViewData="{appModel}"
         >
 
-	<fx:Script>
+    <fx:Script>
 		<![CDATA[
         import com.heyzap.sdk.ads.HeyzapAds;
 

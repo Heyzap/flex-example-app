@@ -10,7 +10,7 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 
 This sample app project is currently using the following SDK versions:
 
-- Heyzap SDK 9.2.4
+- Heyzap SDK 9.3.0
 - AdColony SDK 2.0.9
 - AdMob SDK 7.4.1
 - AppLovin SDK 1.0.10
@@ -20,6 +20,7 @@ This sample app project is currently using the following SDK versions:
 - UnityAds SDK 1.4.5
 - Vungle iOS SDK 3.1.0
 - Vungle Android SDK 3.3.0
+- InMobi SDK 2.0.0
 
 To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air),
 extract the `.zip` file, and replace `libs/HeyzapAds.ane` with the newer version. Do the same for all other SDKs included in the project by downloading the latest supported versions of each (downloads can be found [here](https://developers.heyzap.com/docs/ane_setup_and_requirements).
