@@ -95,6 +95,39 @@
             }
         }
 
+
+        /*
+         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                                                                                            BG MUSIC FUNCTIONALITY
+
+         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         */
+
+        private function onPlayBgMusicChange():void {
+            if (playBgMusicCheckBox.selected) playBgMusic();
+            else stopBgMusic();
+        }
+
+        private var currentMusic:SoundChannel;
+
+        private function playBgMusic():void{
+            logConsole.showLine("Starting bg music playback...");
+            if (!currentMusic)
+            var music:Sound = new EmbedAssets.MusicClass() as Sound;
+            currentMusic = music.play();
+        }
+
+        private function stopBgMusic():void{
+            if (!currentMusic) return;
+
+            logConsole.showLine("Stopping bg music....");
+
+            currentMusic.stop();
+            currentMusic = null;
+        }
+
         ]]>
 	</fx:Script>
 
@@ -135,6 +168,10 @@
                     visible="{incentivizedRadioButton.selected}" includeInLayout="{incentivizedRadioButton.selected}">
                 <s:Label text="Custom info:"/>
                 <s:TextInput id="customInfoTextInput" width="100%"/>
+            </s:HGroup>
+
+            <s:HGroup  width="100%" verticalAlign="middle">
+                <s:CheckBox id="playBgMusicCheckBox" label="Play music" change="onPlayBgMusicChange()"/>
             </s:HGroup>
 
             <s:HGroup width="100%">

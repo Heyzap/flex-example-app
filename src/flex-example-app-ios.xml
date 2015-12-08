@@ -37,6 +37,11 @@
             <!--<string>UIStatusBarStyleBlackOpaque</string>-->
             <key>MinimumOSVersion</key>
             <string>8.0</string>
+
+             <key>UIBackgroundModes</key>
+            <array>
+                <string>audio</string>
+            </array>
             ]]>
         </InfoAdditions>
 
