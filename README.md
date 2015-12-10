@@ -1,8 +1,5 @@
 # Adobe Flex Example App
 
-An Android `.apk` file with all networks working can be found in the `bin/` folder.
-
-
 ## Libraries
 
 Please use the latest versions of libraries in your project. You can find them here:
