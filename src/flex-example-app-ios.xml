@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<application xmlns="http://ns.adobe.com/air/application/19.0">
+<application xmlns="http://ns.adobe.com/air/application/20.0">
     <id>YOUR_PACKAGE_ID</id>
     <filename>flex-example-app</filename>
     <name>flex-example-app</name>
@@ -14,6 +14,7 @@
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>
         <extensionID>com.inmobi.plugin.adobeair</extensionID>
+
     </extensions>
 
     <initialWindow>
@@ -33,8 +34,6 @@
                 <string>1</string>
                 <string>2</string>
             </array>
-            <!--<key>UIStatusBarStyle</key>-->
-            <!--<string>UIStatusBarStyleBlackOpaque</string>-->
             <key>MinimumOSVersion</key>
             <string>8.0</string>
 
@@ -42,6 +41,12 @@
             <array>
                 <string>audio</string>
             </array>
+
+            <key>NSAppTransportSecurity</key>
+                <dict>
+                    <key>NSAllowsArbitraryLoads</key>
+                    <true/>
+                </dict>
             ]]>
         </InfoAdditions>
 
