@@ -30,103 +30,69 @@
             appModel = value as AppModel;
         }
 
+        private function onStartButtonClick():void {
+            var appID:String = appIDTextInput.text;
+            var token:String = tokenTextInput.text;
+            if (appID == "" || token == "") {
+                logConsole.showLine("You must enter an app ID and token.");
+                return;
+            }
+
+            appIDTextInput.enabled = false;
+            tokenTextInput.enabled = false;
+            autofetchCheckbox.enabled = false;
+            startButton.enabled = false;
+
+            fetchButton.enabled = true;
+            showButton.enabled = true;
+            availableButton.enabled = true;
+
+    // TODO implement this for wrapper
+//            HeyzapAds.getInstance().start("",0);
+        }
+
         private function onCreationComplete():void {
             currentActionObject = InterstitialAd.getInstance();
         }
 
-        private function getEnteredAdTagOrNull():String{
-            return adTagTextInput.text?adTagTextInput.text:null;
-        }
-
-        private function getCustomInfoOrNull():String{
-            return adTagTextInput.text?adTagTextInput.text:null;
-        }
-
         private function onFetchButtonClick():void {
-            currentActionObject.fetch(getEnteredAdTagOrNull());
-        }
-
-        private function onHideButtonClick():void {
-            currentActionObject.hide();
-            BannerAd.getInstance().destroy();
-            appModel.bannerIsShown = false;
+            currentActionObject.fetch();
         }
 
         private function onShowButtonClick():void {
-            if (currentActionObject is  BannerAd) {
-                currentActionObject.show(bannerPositionTopRadioButton.selected?BannerAd.POSITION_TOP:BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull());
-                appModel.bannerIsShown = true;
-            } else if (currentActionObject is  IncentivizedAd) {
-                (currentActionObject as IncentivizedAd).show(getEnteredAdTagOrNull(),getCustomInfoOrNull());
-            }else {
-                currentActionObject.show(getEnteredAdTagOrNull());
-            }
+            currentActionObject.show();
         }
 
         private function onAvailableButtonClick():void {
-            logConsole.showLine("Available? result: " + currentActionObject.isAvailable(getEnteredAdTagOrNull()));
+            logConsole.showLine("Available? result: " + currentActionObject.isAvailable());
         }
 
         private function enableAllButtons():void {
             fetchButton.enabled = true;
             showButton.enabled = true;
             showButton.visible = true;
-            hideButton.visible = false;
             availableButton.enabled = true;
         }
 
         //in case we have banner shown we need to hide it before
         private function onActionTypeGroupSelectionChange(event:Event):void {
-            enableAllButtons();
-
-
             if (interstitialRadioButton.selected) {
                 currentActionObject = InterstitialAd.getInstance();
             } else if (incentivizedRadioButton.selected) {
                 currentActionObject = IncentivizedAd.getInstance();
-            } else if (videoRadioButton.selected) {
-                currentActionObject = VideoAd.getInstance();
-            } else if (bannerRadioButton.selected) {
-                currentActionObject = BannerAd.getInstance();
-                fetchButton.enabled = false;
-                availableButton.enabled = false;
-                showButton.visible = !appModel.bannerIsShown;
-                hideButton.visible= !showButton.visible;
             }
+
+//            else if (videoRadioButton.selected) {
+//                currentActionObject = VideoAd.getInstance();
+//            } else if (bannerRadioButton.selected) {
+//                currentActionObject = BannerAd.getInstance();
+//                fetchButton.enabled = false;
+//                availableButton.enabled = false;
+//                showButton.visible = !appModel.bannerIsShown;
+//                hideButton.visible= !showButton.visible;
+//            }
         }
 
-
-        /*
-         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-                                                                                            BG MUSIC FUNCTIONALITY
-
-         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         */
-
-        private function onPlayBgMusicChange():void {
-            if (playBgMusicCheckBox.selected) playBgMusic();
-            else stopBgMusic();
-        }
-
-        private var currentMusic:SoundChannel;
-
-        private function playBgMusic():void{
-            logConsole.showLine("Starting bg music playback...");
-            if (!currentMusic)
-            var music:Sound = new EmbedAssets.MusicClass() as Sound;
-            currentMusic = music.play();
-        }
-
-        private function stopBgMusic():void{
-            if (!currentMusic) return;
-
-            logConsole.showLine("Stopping bg music....");
-
-            currentMusic.stop();
-            currentMusic = null;
-        }
 
         ]]>
 	</fx:Script>
@@ -142,45 +108,35 @@
         <s:VGroup width="100%" height="100%"
                   paddingLeft="6" paddingRight="6" paddingBottom="6" paddingTop="6" horizontalAlign="left">
 
-
-            <s:Button label="Mediation Test Suite"
-                      click="HeyzapAds.getInstance().showMediationTestSuite();"/>
-
-                <s:RadioButton id="interstitialRadioButton" label="Interstitial" group="{actionTypeRadioButtonGroup}" selected="true" />
-                <s:RadioButton id="videoRadioButton" label="Video" group="{actionTypeRadioButtonGroup}"/>
-                <s:RadioButton id="incentivizedRadioButton" label="Incentivized" group="{actionTypeRadioButtonGroup}"/>
-                <s:RadioButton id="bannerRadioButton" label="Banner" group="{actionTypeRadioButtonGroup}"/>
-
-                <s:HGroup verticalAlign="middle"
-                          visible="{bannerRadioButton.selected}" includeInLayout="{bannerRadioButton.selected}">
-                    <s:Label text="Banner Position:"/>
-
-                    <s:RadioButton id="bannerPositionTopRadioButton" label="Top"  selected="true"/>
-                    <s:RadioButton label="Bottom"/>
-                </s:HGroup>
-
             <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Ad tag:"/>
-                <s:TextInput id="adTagTextInput" width="60%"/>
+                <s:Label text="App ID:"/>
+                <s:TextInput id="appIDTextInput" width="60%"/>
             </s:HGroup>
 
-            <s:HGroup id="customInfoGroup" width="100%" verticalAlign="middle"
-                    visible="{incentivizedRadioButton.selected}" includeInLayout="{incentivizedRadioButton.selected}">
-                <s:Label text="Custom info:"/>
-                <s:TextInput id="customInfoTextInput" width="100%"/>
+            <s:HGroup width="100%" verticalAlign="middle">
+                <s:Label text="Token:"/>
+                <s:TextInput id="tokenTextInput" width="60%"/>
             </s:HGroup>
 
             <s:HGroup  width="100%" verticalAlign="middle">
-                <s:CheckBox id="playBgMusicCheckBox" label="Play music" change="onPlayBgMusicChange()"/>
+                <s:CheckBox id="autofetchCheckbox" label="Autofetch"/>
             </s:HGroup>
 
+            <s:Button id="startButton" label="Start" click="onStartButtonClick()"/>
+
+
+
+
+                <s:RadioButton id="interstitialRadioButton" label="Interstitial" group="{actionTypeRadioButtonGroup}" selected="true" />
+                <s:RadioButton id="incentivizedRadioButton" label="Incentivized" group="{actionTypeRadioButtonGroup}"/>
+
             <s:HGroup width="100%">
-                <s:Button id="fetchButton" label="Fetch" click="onFetchButtonClick()"/>
+                <s:Button id="fetchButton" label="Fetch" click="onFetchButtonClick()" enabled="false"/>
                 <s:Group>
-                    <s:Button id="showButton" label="Show" visible="{!appModel.bannerIsShown}" click="onShowButtonClick()"/>
-                    <s:Button id="hideButton" label="Hide" visible="{!showButton.visible}" click="onHideButtonClick()"/>
+                    <s:Button id="showButton" label="Show" visible="{!appModel.bannerIsShown}" click="onShowButtonClick()" enabled="false"/>
+
                 </s:Group>
-                <s:Button id="availableButton" label="Available?" click="onAvailableButtonClick()"/>
+                <s:Button id="availableButton" label="Available?" click="onAvailableButtonClick()" enabled="false"/>
             </s:HGroup>
 
             <!--s:CheckBox id="showLogsCheckBox" label="Show debug logs" selected="@{appModel.showLogs}"/-->
