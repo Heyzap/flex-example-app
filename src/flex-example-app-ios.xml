@@ -13,7 +13,7 @@
         <extensionID>com.jirbo.airadc.AirAdColony</extensionID>
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>
-        <extensionID>com.inmobi.plugin.adobeair</extensionID>
+        <!--<extensionID>com.inmobi.plugin.adobeair</extensionID>-->
 
     </extensions>
 
@@ -35,18 +35,25 @@
                 <string>2</string>
             </array>
             <key>MinimumOSVersion</key>
-            <string>8.0</string>
-
-             <key>UIBackgroundModes</key>
+            <string>7.0</string>
+            <key>UIBackgroundModes</key>
             <array>
                 <string>audio</string>
             </array>
-
             <key>NSAppTransportSecurity</key>
-                <dict>
-                    <key>NSAllowsArbitraryLoads</key>
-                    <true/>
-                </dict>
+            <dict>
+                <key>NSAllowsArbitraryLoads</key>
+                <true/>
+            </dict>
+            <key>LSApplicationQueriesSchemes</key>
+            <array>
+                <string>fb</string>
+                <string>instagram</string>
+                <string>tumblr</string>
+                <string>twitter</string>
+                <string>tel</string>
+                <string>sms</string>
+            </array>
             ]]>
         </InfoAdditions>
 

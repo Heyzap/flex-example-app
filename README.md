@@ -14,7 +14,7 @@ This sample app project is currently using the following SDK versions:
 - Chartboost iOS SDK 5.5.3
 - Chartboost Android SDK 5.5.3
 - Facebook Audience Network SDK 4.3.0
-- UnityAds SDK 1.4.5
+- UnityAds SDK 1.5.6
 - Vungle ANE 2.4.4
 - InMobi SDK 2.1.1
 
