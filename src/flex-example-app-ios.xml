@@ -13,7 +13,7 @@
         <extensionID>com.jirbo.airadc.AirAdColony</extensionID>
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>
-        <!--<extensionID>com.inmobi.plugin.adobeair</extensionID>-->
+        <extensionID>com.inmobi.plugin.adobeair</extensionID>
 
     </extensions>
 

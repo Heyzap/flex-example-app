@@ -14,7 +14,7 @@
         <extensionID>com.vungle.extensions.android.AndroidSupportLib</extensionID>
         <extensionID>com.vungle.extensions.android.GooglePlayServices</extensionID>
         <extensionID>com.vungle.extensions.Vungle</extensionID>
-        <!--<extensionID>com.inmobi.plugin.adobeair</extensionID>-->
+        <extensionID>com.inmobi.plugin.adobeair</extensionID>
     </extensions>
 
     <initialWindow>
