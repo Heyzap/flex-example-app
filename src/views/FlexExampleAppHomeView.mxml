@@ -13,11 +13,10 @@
 
     <fx:Script>
 		<![CDATA[
-        import com.heyzap.sdk.ads.BannerAd;
+        import com.heyzap.sdk.ads.HeyzapAds;
         import com.heyzap.sdk.ads.HeyzapAds;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
-        import com.heyzap.sdk.ads.VideoAd;
 
         import model.AppModel;
 
@@ -47,8 +46,8 @@
             showButton.enabled = true;
             availableButton.enabled = true;
 
-    // TODO implement this for wrapper
-//            HeyzapAds.getInstance().start("",0);
+            var flags:int = autofetchCheckbox.selected ? HeyzapAds.FLAG_NONE : HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH;
+            HeyzapAds.getInstance().start(appID,token,flags);
         }
 
         private function onCreationComplete():void {

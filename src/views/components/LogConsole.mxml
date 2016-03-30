@@ -14,10 +14,8 @@
 
     <fx:Script><![CDATA[
         import com.heyzap.sdk.HeyzapEvent;
-        import com.heyzap.sdk.ads.BannerAd;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
-        import com.heyzap.sdk.ads.VideoAd;
 
         import mx.collections.ArrayCollection;
         import mx.formatters.DateFormatter;
