@@ -32,6 +32,9 @@
         private function onStartButtonClick():void {
             var appID:String = appIDTextInput.text;
             var token:String = tokenTextInput.text;
+            logConsole.showLine("appID: '" + appID + "'");
+            logConsole.showLine("token: '" + token + "'");
+
             if (appID == "" || token == "") {
                 logConsole.showLine("You must enter an app ID and token.");
                 return;
@@ -114,7 +117,7 @@
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Token:"/>
-                <s:TextInput id="tokenTextInput" width="60%"/>
+                <s:TextInput id="tokenTextInput" width="60%" text="token"/>
             </s:HGroup>
 
             <s:HGroup  width="100%" verticalAlign="middle">
