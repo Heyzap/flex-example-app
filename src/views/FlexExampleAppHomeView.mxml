@@ -14,9 +14,9 @@
     <fx:Script>
 		<![CDATA[
         import com.heyzap.sdk.ads.HeyzapAds;
-        import com.heyzap.sdk.ads.HeyzapAds;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
+        import views.components.FyberTextInput;
 
         import model.AppModel;
 
@@ -112,12 +112,12 @@
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="App ID:"/>
-                <s:TextInput id="appIDTextInput" width="60%"/>
+                <components:FyberTextInput id="appIDTextInput" width="60%"/>
             </s:HGroup>
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Token:"/>
-                <s:TextInput id="tokenTextInput" width="60%" text="token"/>
+                <components:FyberTextInput id="tokenTextInput" width="60%" text="token"/>
             </s:HGroup>
 
             <s:HGroup  width="100%" verticalAlign="middle">

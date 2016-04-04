@@ -13,7 +13,7 @@
         <extensionID>com.fyber.mediation.chartboost</extensionID>
         <extensionID>com.fyber.mediation.facebook</extensionID>
         <extensionID>com.fyber.mediation.hyprmx</extensionID>
-        <!--<extensionID>com.fyber.mediation.inmobi</extensionID>-->
+        <extensionID>com.fyber.mediation.inmobi</extensionID>
         <extensionID>com.fyber.mediation.unityads</extensionID>
         <extensionID>com.fyber.mediation.vungle</extensionID>
         <extensionID>com.fyber.playservices</extensionID>
@@ -34,49 +34,80 @@
         <colorDepth>16bit</colorDepth>
         <manifestAdditions><![CDATA[
 			<manifest android:installLocation="auto">
-				<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-				<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-				<uses-permission android:name="android.permission.INTERNET" />
-				<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-				<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-				<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        		<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+                <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+                <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+                <uses-permission android:name="android.permission.INTERNET" />
+                <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+                <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+                <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+                <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+                <uses-permission android:name="android.permission.VIBRATE" />
 
-				<application android:hardwareAccelerated="true">
+        		<!-- InMobi optional permissions -->
+                <!-- Permissions listed below are not mandatory - adding them will improve InMobi's ads targeting and user experience. -->
+                <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+                <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+                <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+                <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+                <uses-permission android:name="android.permission.READ_LOGS" />
+                <uses-permission android:name="android.permission.RECORD_AUDIO" />
+                <uses-permission android:name="android.permission.READ_CALENDAR" />
+                <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+                <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+                <!-- The permissions listed above can be removed without affecting the standard behaviour of InMobi SDK. -->
+
+				<application android:hardwareAccelerated="true" android:largeHeap="true"><!-- largeHeap is for HyprMX-->
+
                     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-
 					<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
-					<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" /><activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
+					<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
+					<activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
 
-					<activity android:name="com.chartboost.sdk.CBImpressionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:excludeFromRecents="true" />
+					<activity android:name="com.chartboost.sdk.CBImpressionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:excludeFromRecents="true" android:configChanges="keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize"/>
 
-					<activity android:name="com.facebook.ads.InterstitialAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+					<activity android:name="com.facebook.ads.InterstitialAdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
 					<activity android:name="com.jirbo.adcolony.AdColonyOverlay" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 					<activity android:name="com.jirbo.adcolony.AdColonyFullscreen" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 					<activity android:name="com.jirbo.adcolony.AdColonyBrowser" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+					<activity android:name="com.fyber.mediation.adcolony.rv.VideoProxyActivity" />
+                    <activity android:name="com.fyber.mediation.adcolony.interstitial.InterstitialProxyActivity" />
 
 					<activity android:name="com.heyzap.sdk.ads.HeyzapInterstitialActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapIncentivizedActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" /><!-- new for fyber wrapper -->
 					<activity android:name="com.heyzap.sdk.ads.HeyzapVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapProxyActivity" />
-					<activity android:name="com.heyzap.sdk.ads.VASTActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
-					<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
+					<!--<activity android:name="com.heyzap.sdk.ads.VASTActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
+					<!--<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
 
-                    <activity android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" />
+                    <!-- HyprMX-->
+                    <activity
+                        android:name="com.hyprmx.android.sdk.activity.HyprMXOfferViewerActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="HyprMX SDK" android:launchMode="singleTop" />
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXRequiredInformationActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXNoOffersActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXWebTrafficActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXVideoPlayerActivity" android:configChanges="orientation|keyboardHidden|screenSize" />
+                    <!-- HyprMX-Fyber helper activity -->
+                    <activity android:name="com.fyber.mediation.hyprmx.rv.HyprMXVideoMediationActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
 
-                    <activity android:name="com.vungle.publisher.FullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"    />
-                    <service android:name="com.vungle.publisher.VungleService" android:exported="false"/>
-
-                    <activity android:name="com.inmobi.rendering.InMobiAdActivity" android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:hardwareAccelerated="true" />
-
-
-                    <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true" >
+                    <!-- InMobi-->
+                    <activity android:name="com.inmobi.androidsdk.IMBrowserActivity" android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:hardwareAccelerated="true" />
+                    <!-- allows for optimization of ad delivery -->
+                    <service android:name="com.inmobi.commons.internal.ActivityRecognitionManager" android:enabled="true" />
+                    <!-- used to track installs using the Google Play referrer -->
+                    <receiver android:name="com.inmobi.commons.analytics.androidsdk.IMAdTrackerReceiver" android:enabled="true" android:exported="true">
                         <intent-filter>
+                            <action android:name="com.android.vending.INSTALL_REFERRER" />
+                            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
                             <action android:name="com.inmobi.share.id" />
                         </intent-filter>
                     </receiver>
+
+                    <activity android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+                    <activity android:name="com.vungle.publisher.FullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"    />
+                    <!--<service android:name="com.vungle.publisher.VungleService" android:exported="false"/>-->
 
 					<receiver android:name="com.heyzap.sdk.ads.PackageAddedReceiver">
 						<intent-filter>
@@ -84,6 +115,12 @@
 							<action android:name="android.intent.action.PACKAGE_ADDED"/>
 						</intent-filter>
 					</receiver>
+
+					<activity android:name="com.fyber.ads.ofw.OfferWallActivity" android:configChanges="screenSize|orientation" />
+                    <activity android:name="com.fyber.ads.videos.RewardedVideoActivity" android:configChanges="screenSize|orientation" android:hardwareAccelerated="true" android:theme="@android:style/Theme.Translucent" />
+                    <activity android:name="com.fyber.ads.interstitials.InterstitialActivity" android:configChanges="screenSize|orientation" android:theme="@android:style/Theme.Translucent" />
+					<service android:name="com.fyber.cache.CacheVideoDownloadService" android:exported="false" />
+
 				</application>
 			</manifest>
 		]]>
