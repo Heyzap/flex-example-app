@@ -58,10 +58,12 @@
         }
 
         private function onFetchButtonClick():void {
+            logConsole.showLine("Fetching...");
             currentActionObject.fetch();
         }
 
         private function onShowButtonClick():void {
+            logConsole.showLine("Showing...");
             currentActionObject.show();
         }
 
