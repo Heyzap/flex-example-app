@@ -59,6 +59,7 @@
 				<application android:hardwareAccelerated="true" android:largeHeap="true"><!-- largeHeap is for HyprMX-->
 
                     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+                    <meta-data android:name="applovin.sdk.key" android:value="XKRiiK6KGT0lozW5QhDtTXPBcL0mm5lIQA07U6SmfSVRQ1XskliCH6NuSNdCTNUuTV01bSoGwIhKJEA2-uEF_b"/>
 					<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
 					<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
@@ -82,11 +83,30 @@
 					<!--<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
 
                     <!-- HyprMX-->
-                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXOfferViewerActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:label="HyprMX SDK" android:launchMode="singleTop" />
-                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXRequiredInformationActivity" android:configChanges="keyboardHidden|orientation|screenSize"/>
-                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXNoOffersActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
-                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXWebTrafficActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
-                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXVideoPlayerActivity" android:configChanges="orientation|keyboardHidden|screenSize" />
+                    <activity android:name="com.fyber.mediation.hyprmx.rv.HyprMXVideoActivity"
+                                android:configChanges="orientation|screenSize|keyboardHidden|keyboard|smallestScreenSize|uiMode|fontScale|screenLayout|locale" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXOfferViewerActivity"
+                        android:configChanges="orientation|screenSize|keyboardHidden|keyboard|smallestScreenSize|uiMode|fontScale|screenLayout|locale"
+                        android:label="HyprMX SDK"
+                        android:launchMode="singleTop"
+                        android:theme="@android:style/Theme.NoTitleBar" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXRequiredInformationActivity"
+                        android:theme="@android:style/Theme.NoTitleBar" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXSplashActivity"
+                        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXOfferListActivity"
+                        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXNoOffersActivity"
+                        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+                    <activity android:name="com.hyprmx.android.sdk.activity.HyprMXWebTrafficActivity"
+                        android:configChanges="orientation|screenSize|keyboardHidden|keyboard|smallestScreenSize|uiMode|fontScale|screenLayout|locale"
+                        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
                     <!-- HyprMX-Fyber helper activity -->
                     <activity android:name="com.fyber.mediation.hyprmx.rv.HyprMXVideoMediationActivity" android:configChanges="keyboardHidden|orientation|screenSize" />
 
