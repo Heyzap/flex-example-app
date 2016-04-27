@@ -15,6 +15,8 @@
 
         <!--<extensionID>com.fyber.sdk</extensionID>-->
         <extensionID>com.fyber.mediation.adcolony</extensionID>
+        <extensionID>com.fyber.mediation.facebook</extensionID>
+        <extensionID>com.fyber.mediation.admob</extensionID>
 
         <!--<extensionID>com.inmobi.plugin.adobeair</extensionID>-->
     </extensions>
@@ -50,6 +52,24 @@
                     <key>NSAllowsArbitraryLoads</key>
                     <true/>
                 </dict>
+
+            <key>adapters</key>
+                <array>
+                    <dict>
+                        <key>name</key>
+                        <string>FacebookAudienceNetwork</string>
+                        <key>settings</key>
+                        <dict>
+                            <key>SPFacebookTestDevices</key>
+                            <array>
+                                <string>35ab9c20f3acd63ec5ae29a262839a775ea29660</string>
+                                <string>887b361bc4e42991982077a604da3650b71a82da</string>
+                                <string>d4269b65ce1e1b7091582fc560738f24f7de0312</string>
+                            </array>
+                        </dict>
+                    </dict>
+                </array>
+
             ]]>
         </InfoAdditions>
 

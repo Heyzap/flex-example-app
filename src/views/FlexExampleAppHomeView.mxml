@@ -17,6 +17,7 @@
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
         import views.components.FyberTextInput;
+        import com.heyzap.sdk.ads.BannerAd;
 
         import model.AppModel;
 
@@ -49,6 +50,8 @@
             showButton.enabled = true;
             availableButton.enabled = true;
 
+            actionTypeRadioButtonGroup.enabled = true;
+
             var flags:int = autofetchCheckbox.selected ? HeyzapAds.FLAG_NONE : HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH;
             HeyzapAds.getInstance().start(appID,token,flags);
         }
@@ -71,6 +74,19 @@
             logConsole.showLine("Available? result: " + currentActionObject.isAvailable());
         }
 
+        /// Banners
+
+        private function onShowBannerButtonClick():void {
+            var position:String = bannerTopRadioButton.selected ? BannerAd.POSITION_TOP : BannerAd.POSITION_BOTTOM;
+            BannerAd.getInstance().show(position);
+        }
+        private function onHideBannerButtonClick():void {
+            BannerAd.getInstance().hide();
+        }
+        private function onDestroyBannerButtonClick():void {
+            BannerAd.getInstance().destroy();
+        }
+
         private function enableAllButtons():void {
             fetchButton.enabled = true;
             showButton.enabled = true;
@@ -84,17 +100,20 @@
                 currentActionObject = InterstitialAd.getInstance();
             } else if (incentivizedRadioButton.selected) {
                 currentActionObject = IncentivizedAd.getInstance();
+            } else if (bannerRadioButton.selected) {
+                currentActionObject = BannerAd.getInstance();
             }
 
-//            else if (videoRadioButton.selected) {
-//                currentActionObject = VideoAd.getInstance();
-//            } else if (bannerRadioButton.selected) {
-//                currentActionObject = BannerAd.getInstance();
-//                fetchButton.enabled = false;
-//                availableButton.enabled = false;
-//                showButton.visible = !appModel.bannerIsShown;
-//                hideButton.visible= !showButton.visible;
-//            }
+            showAppropriateControls();
+        }
+
+        private function showAppropriateControls():void {
+            bannerControlsGroup.visible = bannerRadioButton.selected;
+            nonBannerControlsGroup.visible = !bannerRadioButton.selected;
+        }
+
+        private function onBannerPositionSelectionChange(event:Event):void {
+
         }
 
 
@@ -103,7 +122,9 @@
 
     <fx:Declarations>
         <s:RadioButtonGroup id="actionTypeRadioButtonGroup"
-                            change="onActionTypeGroupSelectionChange(event)"/>
+                            change="onActionTypeGroupSelectionChange(event)" enabled="false"/>
+        <s:RadioButtonGroup id="bannerPositionRadioButtonGroup"
+                            change="onBannerPositionSelectionChange(event)"/>
 
     </fx:Declarations>
 
@@ -133,8 +154,9 @@
 
                 <s:RadioButton id="interstitialRadioButton" label="Interstitial" group="{actionTypeRadioButtonGroup}" selected="true" />
                 <s:RadioButton id="incentivizedRadioButton" label="Incentivized" group="{actionTypeRadioButtonGroup}"/>
+                <s:RadioButton id="bannerRadioButton"       label="Banner"       group="{actionTypeRadioButtonGroup}"/>
 
-            <s:HGroup width="100%">
+            <s:HGroup width="100%" id="nonBannerControlsGroup">
                 <s:Button id="fetchButton" label="Fetch" click="onFetchButtonClick()" enabled="false"/>
                 <s:Group>
                     <s:Button id="showButton" label="Show" visible="{!appModel.bannerIsShown}" click="onShowButtonClick()" enabled="false"/>
@@ -142,6 +164,25 @@
                 </s:Group>
                 <s:Button id="availableButton" label="Available?" click="onAvailableButtonClick()" enabled="false"/>
             </s:HGroup>
+
+            <s:VGroup width="100%" id="bannerControlsGroup" visible="false">
+                <s:HGroup width="100%" >
+                    <s:RadioButton id="bannerTopRadioButton" label="Top" group="{bannerPositionRadioButtonGroup}" selected="true" />
+                    <s:RadioButton id="bannerBottomRadioButton" label="Bottom" group="{bannerPositionRadioButtonGroup}"/>
+                </s:HGroup>
+
+                <s:HGroup width="100%" >
+                    <s:Button id="showBannerButton" label="Show" click="onShowBannerButtonClick()"/>
+                    <s:Button id="hideBannerButton" label="Hide" click="onHideBannerButtonClick()"/>
+                    <s:Button id="destroyBannerNutton" label="Destroy" click="onDestroyBannerButtonClick()"/>
+                </s:HGroup>
+            </s:VGroup>
+
+
+
+
+
+
 
             <!--s:CheckBox id="showLogsCheckBox" label="Show debug logs" selected="@{appModel.showLogs}"/-->
 

@@ -16,6 +16,7 @@
         import com.heyzap.sdk.HeyzapEvent;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
+        import com.heyzap.sdk.ads.BannerAd;
 
         import mx.collections.ArrayCollection;
         import mx.formatters.DateFormatter;
@@ -50,9 +51,9 @@
             InterstitialAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_FINISHED, onInterstitialEvent);
 
             // BANNER AD CALLBACKS
-//            BannerAd.getInstance().addEventListener(HeyzapEvent.ON_LOADED, onBannerEvent);
-//            BannerAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onBannerEvent);
-//            BannerAd.getInstance().addEventListener(HeyzapEvent.ON_ERROR, onBannerEvent);
+            BannerAd.getInstance().addEventListener(HeyzapEvent.ON_LOADED, onBannerEvent);
+            BannerAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onBannerEvent);
+            BannerAd.getInstance().addEventListener(HeyzapEvent.ON_ERROR, onBannerEvent);
 
             // VIDEO CALLBACKS
 //            VideoAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, onVideoEvent);
@@ -90,9 +91,9 @@
             InterstitialAd.getInstance().removeEventListener(HeyzapEvent.ON_AUDIO_FINISHED, onInterstitialEvent);
 
             // BANNER AD CALLBACKS
-//            BannerAd.getInstance().removeEventListener(HeyzapEvent.ON_LOADED, onBannerEvent);
-//            BannerAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onBannerEvent);
-//            BannerAd.getInstance().removeEventListener(HeyzapEvent.ON_ERROR, onBannerEvent);
+            BannerAd.getInstance().removeEventListener(HeyzapEvent.ON_LOADED, onBannerEvent);
+            BannerAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onBannerEvent);
+            BannerAd.getInstance().removeEventListener(HeyzapEvent.ON_ERROR, onBannerEvent);
 
             // VIDEO
 //            VideoAd.getInstance().removeEventListener(HeyzapEvent.DID_SHOW, onVideoEvent);
@@ -123,20 +124,20 @@
 
         }
 
-//        private function onBannerEvent(event:HeyzapEvent):void {
-//            showLine("[BANNER] " + event.type);
-//
-//            switch (event.type) {
-//                case HeyzapEvent.ON_LOADED:
-//                    var dim:Rectangle = BannerAd.getInstance().dimensions();
-//                    if (dim != null) {
-//                        showLine("Banner ad dimensions: x=" + dim.x + " y=" + dim.y + " width=" + dim.width + " height=" + dim.height);
-//                    } else {
-//                        showLine("Could not get banner ad dimensions.");
-//                    }
-//                    return;
-//            }
-//        }
+        private function onBannerEvent(event:HeyzapEvent):void {
+            showLine("[BANNER] " + event.type);
+
+            switch (event.type) {
+                case HeyzapEvent.ON_LOADED:
+                    var dim:Rectangle = BannerAd.getInstance().dimensions();
+                    if (dim != null) {
+                        showLine("Banner ad dimensions: x=" + dim.x + " y=" + dim.y + " width=" + dim.width + " height=" + dim.height);
+                    } else {
+                        showLine("Could not get banner ad dimensions.");
+                    }
+                    return;
+            }
+        }
 
 //        private function onVideoEvent(event:HeyzapEvent):void {
 //            showLine("[VIDEO] " + event.type);
