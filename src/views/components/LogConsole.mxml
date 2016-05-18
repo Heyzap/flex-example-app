@@ -126,17 +126,6 @@
 
         private function onBannerEvent(event:HeyzapEvent):void {
             showLine("[BANNER] " + event.type);
-
-            switch (event.type) {
-                case HeyzapEvent.ON_LOADED:
-                    var dim:Rectangle = BannerAd.getInstance().dimensions();
-                    if (dim != null) {
-                        showLine("Banner ad dimensions: x=" + dim.x + " y=" + dim.y + " width=" + dim.width + " height=" + dim.height);
-                    } else {
-                        showLine("Could not get banner ad dimensions.");
-                    }
-                    return;
-            }
         }
 
 //        private function onVideoEvent(event:HeyzapEvent):void {

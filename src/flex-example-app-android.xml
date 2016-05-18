@@ -6,12 +6,11 @@
     <versionNumber>1.0.0</versionNumber>
     <extensions>
         <extensionID>com.heyzap.sdk.extensions</extensionID>
-        <extensionID>com.heyzap.sdk.extensions.fyberSDK</extensionID>
         <extensionID>com.fyber.mediation.adcolony</extensionID>
         <extensionID>com.fyber.mediation.admob</extensionID>
         <extensionID>com.fyber.mediation.applovin</extensionID>
         <extensionID>com.fyber.mediation.chartboost</extensionID>
-        <extensionID>com.fyber.mediation.facebook</extensionID>
+        <!--<extensionID>com.fyber.mediation.facebook</extensionID>-->
         <extensionID>com.fyber.mediation.hyprmx</extensionID>
         <extensionID>com.fyber.mediation.inmobi</extensionID>
         <extensionID>com.fyber.mediation.unityads</extensionID>

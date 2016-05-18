@@ -53,7 +53,7 @@
             actionTypeRadioButtonGroup.enabled = true;
 
             var flags:int = autofetchCheckbox.selected ? HeyzapAds.FLAG_NONE : HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH;
-            HeyzapAds.getInstance().start(appID,token,flags);
+            HeyzapAds.getInstance().start(appID,token,flags, "magicTestApp" /* sets this device as a test device with HeyzapAds.addTestDevice()*/);
         }
 
         private function onCreationComplete():void {
@@ -135,12 +135,12 @@
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="App ID:"/>
-                <components:FyberTextInput id="appIDTextInput" width="60%"/>
+                <components:FyberTextInput id="appIDTextInput" width="60%" text="40867"/>
             </s:HGroup>
 
             <s:HGroup width="100%" verticalAlign="middle">
                 <s:Label text="Token:"/>
-                <components:FyberTextInput id="tokenTextInput" width="60%" text="token"/>
+                <components:FyberTextInput id="tokenTextInput" width="60%" text="419bcd37e8454aab3d49fa4df09d4a39"/>
             </s:HGroup>
 
             <s:HGroup  width="100%" verticalAlign="middle">
