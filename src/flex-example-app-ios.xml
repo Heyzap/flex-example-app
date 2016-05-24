@@ -23,7 +23,7 @@
 
     <initialWindow>
         <content></content>
-        <aspectRatio>portrait</aspectRatio>
+        <aspectRatio>any</aspectRatio>
         <visible>true</visible>
         <autoOrients>true</autoOrients>
         <fullScreen>true</fullScreen>
