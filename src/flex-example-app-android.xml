@@ -9,12 +9,12 @@
         <extensionID>com.fyber.mediation.adcolony</extensionID>
         <extensionID>com.fyber.mediation.admob</extensionID>
         <extensionID>com.fyber.mediation.applovin</extensionID>
-        <extensionID>com.fyber.mediation.chartboost</extensionID>
+        <!--<extensionID>com.fyber.mediation.chartboost</extensionID>-->
         <extensionID>com.fyber.mediation.facebook</extensionID>
-        <extensionID>com.fyber.mediation.hyprmx</extensionID>
-        <extensionID>com.fyber.mediation.inmobi</extensionID>
+        <!--<extensionID>com.fyber.mediation.hyprmx</extensionID>-->
+        <!--<extensionID>com.fyber.mediation.inmobi</extensionID>-->
         <extensionID>com.fyber.mediation.unityads</extensionID>
-        <extensionID>com.fyber.mediation.vungle</extensionID>
+        <!--<extensionID>com.fyber.mediation.vungle</extensionID>-->
         <extensionID>com.fyber.playservices</extensionID>
 
     </extensions>
