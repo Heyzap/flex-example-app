@@ -31,18 +31,16 @@
         }
 
         private function onStartButtonClick():void {
-            var appID:String = appIDTextInput.text;
-            var token:String = tokenTextInput.text;
-            logConsole.showLine("appID: '" + appID + "'");
-            logConsole.showLine("token: '" + token + "'");
+            var publisherID:String = publisherIDTextInput.text;
+            logConsole.showLine("publisherID: '" + publisherID + "'");
 
-            if (appID == "" || token == "") {
-                logConsole.showLine("You must enter an app ID and token.");
+            if (publisherID == "") {
+                logConsole.showLine("You must enter a publisher ID.");
                 return;
             }
 
-            appIDTextInput.enabled = false;
-            tokenTextInput.enabled = false;
+            publisherIDTextInput.enabled = false;
+
             autofetchCheckbox.enabled = false;
             startButton.enabled = false;
 
@@ -53,7 +51,11 @@
             actionTypeRadioButtonGroup.enabled = true;
 
             var flags:int = autofetchCheckbox.selected ? HeyzapAds.FLAG_NONE : HeyzapAds.FLAG_DISABLE_AUTOMATIC_FETCH;
-            HeyzapAds.getInstance().start(appID,token,flags, "magicTestApp" /* sets this device as a test device with HeyzapAds.addTestDevice()*/);
+            HeyzapAds.getInstance().start(publisherID, flags, "magicTestApp" /* sets this device as a test device with HeyzapAds.addTestDevice()*/);
+        }
+
+        private function onTestSuiteButtonClick():void {
+            HeyzapAds.getInstance().showMediationTestSuite();
         }
 
         private function onCreationComplete():void {
@@ -134,21 +136,18 @@
                   paddingLeft="6" paddingRight="6" paddingBottom="6" paddingTop="6" horizontalAlign="left">
 
             <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="App ID:"/>
-                <components:FyberTextInput id="appIDTextInput" width="60%" text="40867"/>
-            </s:HGroup>
-
-            <s:HGroup width="100%" verticalAlign="middle">
-                <s:Label text="Token:"/>
-                <components:FyberTextInput id="tokenTextInput" width="60%" text="419bcd37e8454aab3d49fa4df09d4a39"/>
+                <s:Label text="Publisher ID:"/>
+                <components:FyberTextInput id="publisherIDTextInput" width="60%" text="1234"/>
             </s:HGroup>
 
             <s:HGroup  width="100%" verticalAlign="middle">
                 <s:CheckBox id="autofetchCheckbox" label="Autofetch"/>
             </s:HGroup>
 
-            <s:Button id="startButton" label="Start" click="onStartButtonClick()"/>
-
+            <s:HGroup  width="100%" verticalAlign="middle">
+                <s:Button id="startButton" label="Start" click="onStartButtonClick()"/>
+                <s:Button id="testSuiteButton" label="Test Suite" click="onTestSuiteButtonClick()"/>
+            </s:HGroup>
 
 
 

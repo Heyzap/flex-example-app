@@ -14,6 +14,7 @@
 
     <fx:Script><![CDATA[
         import com.heyzap.sdk.HeyzapEvent;
+        import com.heyzap.sdk.ads.HeyzapAds;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
         import com.heyzap.sdk.ads.BannerAd;
@@ -42,7 +43,7 @@
         private function setListeners():void {
             // INTERSTITIAL CALLBACKS
             InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, onInterstitialEvent);
-            InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onInterstitialEvent);
+            //InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onInterstitialEvent);
             InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, onInterstitialEvent);
             InterstitialAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, onInterstitialEvent);
             InterstitialAd.getInstance().addEventListener(HeyzapEvent.IS_AVAILABLE, onInterstitialEvent);
@@ -67,7 +68,7 @@
 
             // INCENTIVIZED CALLBACKS
             IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_SHOW, onIncentivizedAdEvent);
-            IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onIncentivizedAdEvent);
+            //IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_CLICK, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_HIDE, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().addEventListener(HeyzapEvent.DID_FAIL, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().addEventListener(HeyzapEvent.ON_AUDIO_STARTED, onIncentivizedAdEvent);
@@ -82,7 +83,7 @@
 
             // INTERSTITIAL CALLBACKS
             InterstitialAd.getInstance().removeEventListener(HeyzapEvent.DID_SHOW, onInterstitialEvent);
-            InterstitialAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onInterstitialEvent);
+            //InterstitialAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onInterstitialEvent);
             InterstitialAd.getInstance().removeEventListener(HeyzapEvent.DID_HIDE, onInterstitialEvent);
             InterstitialAd.getInstance().removeEventListener(HeyzapEvent.DID_FAIL, onInterstitialEvent);
             InterstitialAd.getInstance().removeEventListener(HeyzapEvent.IS_AVAILABLE, onInterstitialEvent);
@@ -107,7 +108,7 @@
 
             // INCENTIVIZED CALLBACKS
             IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.DID_SHOW, onIncentivizedAdEvent);
-            IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onIncentivizedAdEvent);
+            //IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.DID_CLICK, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.DID_HIDE, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.DID_FAIL, onIncentivizedAdEvent);
             IncentivizedAd.getInstance().removeEventListener(HeyzapEvent.ON_AUDIO_STARTED, onIncentivizedAdEvent);
@@ -126,6 +127,10 @@
 
         private function onBannerEvent(event:HeyzapEvent):void {
             showLine("[BANNER] " + event.type);
+            if(event.type == HeyzapEvent.ON_LOADED) {
+                var dims:flash.geom.Rectangle = BannerAd.getInstance().dimensions();
+                showLine("Banner dims: x: " + dims.x + ", y: " + dims.y + "   width: " + dims.width + ", height: " + dims.height);
+            }
         }
 
 //        private function onVideoEvent(event:HeyzapEvent):void {

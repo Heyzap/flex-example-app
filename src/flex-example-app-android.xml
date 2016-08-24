@@ -13,6 +13,7 @@
         <extensionID>com.fyber.mediation.facebook</extensionID>
         <extensionID>com.fyber.mediation.hyprmx</extensionID>
         <extensionID>com.fyber.mediation.inmobi</extensionID>
+        <extensionID>com.fyber.mediation.inneractive</extensionID>
         <extensionID>com.fyber.mediation.unityads</extensionID>
         <extensionID>com.fyber.mediation.vungle</extensionID>
         <extensionID>com.fyber.playservices</extensionID>
@@ -76,10 +77,10 @@
 
 					<activity android:name="com.heyzap.sdk.ads.HeyzapInterstitialActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapIncentivizedActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" /><!-- new for fyber wrapper -->
-					<activity android:name="com.heyzap.sdk.ads.HeyzapVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
+					<!--<activity android:name="com.heyzap.sdk.ads.HeyzapVideoActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
 					<activity android:name="com.heyzap.sdk.ads.HeyzapProxyActivity" />
 					<!--<activity android:name="com.heyzap.sdk.ads.VASTActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
-					<!--<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />-->
+					<activity android:name="com.heyzap.sdk.ads.MediationTestActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 
                     <!-- HyprMX-->
                     <activity android:name="com.fyber.mediation.hyprmx.rv.HyprMXVideoActivity"
