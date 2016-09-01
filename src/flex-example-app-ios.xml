@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<application xmlns="http://ns.adobe.com/air/application/20.0">
-    <id>YOUR_PACKAGE_ID</id>
+<application xmlns="http://ns.adobe.com/air/application/22.0">
+    <id>com.EnterpriseHeyzap.HeyzapSDKTest</id>
     <filename>flex-example-app</filename>
     <name>flex-example-app</name>
     <versionNumber>1.0.0</versionNumber>
