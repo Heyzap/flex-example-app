@@ -8,8 +8,10 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 This sample app project is currently using the following SDK versions:
 
 - Heyzap SDK 9.3.0
+- AdMob SDK 7.10.1
+- Google Play Services Ads 8.3.0
 - AdColony SDK 2.0.9
-- AdMob SDK 7.4.1
+
 - AppLovin SDK 1.0.10
 - Chartboost iOS SDK 5.5.3
 - Chartboost Android SDK 5.5.3
