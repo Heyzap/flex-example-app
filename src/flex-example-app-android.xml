@@ -13,7 +13,8 @@
         <extensionID>com.jirbo.airadc.AirAdColony</extensionID>
         <extensionID>com.chartboost.plugin.air</extensionID>
         <extensionID>com.applovin.sdk.air</extensionID>
-        <!--extensionID>com.vungle.extensions.android.AndroidSupportLib</extensionID-->
+
+
         <extensionID>com.vungle.extensions.Vungle</extensionID>
         <extensionID>com.inmobi.plugin.adobeair</extensionID>
     </extensions>
@@ -42,11 +43,12 @@
 
 				<application android:hardwareAccelerated="true">
 
-				<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+				    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
 					<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
-					<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" /><activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
+					<activity android:name="com.applovin.adview.AppLovinInterstitialActivity" />
+					<activity android:name="com.applovin.adview.AppLovinConfirmationActivity" />
 
 					<activity android:name="com.chartboost.sdk.CBImpressionActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:excludeFromRecents="true" />
 

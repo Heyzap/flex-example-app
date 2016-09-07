@@ -7,18 +7,17 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 
 This sample app project is currently using the following SDK versions:
 
-- Heyzap SDK 9.3.0
+- Heyzap SDK 9.6.5
 - AdMob SDK 7.10.1
 - Google Play Services Ads 8.3.0
-- AdColony SDK 2.0.9
-
-- AppLovin SDK 1.0.10
-- Chartboost iOS SDK 5.5.3
-- Chartboost Android SDK 5.5.3
-- Facebook Audience Network SDK 4.3.0
 - UnityAds SDK 1.5.8
-- Vungle ANE 2.4.4
-- InMobi ANE SDK 2.1.1 ( 5.2.0 iOS SDK and 5.2.1 Android SDK ) 
+- Chartboost SDK 6.4.0
+- AppLovin SDK 1.1.9
+- AdColony SDK 2.6.3 ( Android 2.3.6 / iOS 2.6.2 )
+- Vungle 3.0.3 ( Android 4.0.2 / iOS 3.2.1 )
+- InMobi ANE SDK 2.1.1 ( Android 5.2.1 / iOS 5.2.0 )
+ 
+ - Facebook Audience Network SDK 4.3.0
 
 To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air),
 extract the `.zip` file, and replace `libs/HeyzapAds.ane` with the newer version. Do the same for all other SDKs included in the project by downloading the latest supported versions of each (downloads can be found [here](https://developers.heyzap.com/docs/ane_setup_and_requirements).
