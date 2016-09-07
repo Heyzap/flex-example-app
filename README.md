@@ -16,8 +16,7 @@ This sample app project is currently using the following SDK versions:
 - AdColony SDK 2.6.3 ( Android 2.3.6 / iOS 2.6.2 )
 - Vungle 3.0.3 ( Android 4.0.2 / iOS 3.2.1 )
 - InMobi ANE SDK 2.1.1 ( Android 5.2.1 / iOS 5.2.0 )
- 
- - Facebook Audience Network SDK 4.3.0
+- Facebook Audience Network SDK 4.15.0 (Android 4.15.0 / iOS 4.15.0)
 
 To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air),
 extract the `.zip` file, and replace `libs/HeyzapAds.ane` with the newer version. Do the same for all other SDKs included in the project by downloading the latest supported versions of each (downloads can be found [here](https://developers.heyzap.com/docs/ane_setup_and_requirements).
@@ -35,16 +34,18 @@ Setup the project in your IDE, add the appropriate libraries, connect your devic
 
 ## Setting up the project
 
-1. Import the project to your IDE as a Flex project.
-    - Select Adobe Air+Flex SDK. This test application has been tested with Flex 4.6 and Adobe Air 19.
-1. Set the application descriptor to `flex-example-app-ios.xml` for iOS or `flex-example-app-android.xml` for Android (located in the `src/` folder).
-1. Set "FlexExampleApp" as the main `.mxml` file for the project.
-1. Open `FlexExampleApp.mxml` and change `<APP_ID>` in the call to `HeyzapAds.getInstance().start` to your own publisher ID, which can be found on the [Heyzap docs](https://developers.heyzap.com/docs/ane_setup_and_requirements).
-1. Set the application ID in the application descriptors, `flex-example-app-android.xml` and `flex-example-app-ios.xml` to your own app's bundle identifier by replacing `YOUR_PACKAGE_ID` with it.
-1. Add libraries to the project. Common ANEs are located under the `libs/` folder. For iOS also add the ANEs from the `ios-libs/` folder, and for Android add all ANEs from the `android-libs/` folder.
-1. Add all the splash screen files named `src/Default*.png` to the iOS build settings in your IDE (optional).
-1. Setup platform specific settings (certificates, keys, etc.) in your IDE as necessary.
-1. Compile and run!
+- Import the project to your IDE as a Flex project.
+- Select Adobe Air+Flex SDK. This test application has been tested with Flex 4.6 and Adobe Air 19.
+- Set the application descriptor to `flex-example-app-ios.xml` for iOS or `flex-example-app-android.xml` for Android (located in the `src/` folder).
+- Set "FlexExampleApp" as the main `.mxml` file for the project.
+- Open `FlexExampleApp.mxml` and change `<APP_ID>` in the call to `HeyzapAds.getInstance().start` to your own publisher ID, which can be found on the [Heyzap docs](https://developers.heyzap.com/docs/ane_setup_and_requirements).
+- Set the application ID in the application descriptors, `flex-example-app-android.xml` and `flex-example-app-ios.xml` to your own app's bundle identifier by replacing `YOUR_PACKAGE_ID` with it.
+- Add libraries to the project. Common ANEs are located under the `libs/` folder. For iOS also add the ANEs from the `ios-libs/` folder, and for Android add all ANEs from the `android-libs/` folder.
+- Add all the splash screen files named `src/Default*.png` to the iOS build settings in your IDE (optional).
+- Setup platform specific settings (certificates, keys, etc.) in your IDE as necessary.
+- Compile and run!
+
+Some of ANEs might require min SWF version to be set. Add -swf-version=xx ( where xx is min required SWF version ) to build parameters 
 
 Further information on the Heyzap SDK can be found at https://developers.heyzap.com/docs/ane_setup_and_requirements
 
