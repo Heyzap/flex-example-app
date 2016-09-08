@@ -41,6 +41,7 @@
 				<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         		<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
 
+
 				<application android:hardwareAccelerated="true">
 
 				    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
@@ -66,15 +67,15 @@
 
                     <activity android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" />
 
-                    <activity android:name="com.vungle.publisher.FullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"    />
-                    <service android:name="com.vungle.publisher.VungleService" android:exported="false"/>
+                   <activity android:name="com.vungle.publisher.VideoFullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+                    <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
 
-                    <!--<activity android:name="com.inmobi.rendering.InMobiAdActivity" android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:hardwareAccelerated="true" />-->
-                    <!--<receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true" >-->
-                        <!--<intent-filter>-->
-                            <!--<action android:name="com.inmobi.share.id" />-->
-                        <!--</intent-filter>-->
-                    <!--</receiver>-->
+                    <activity android:name="com.inmobi.rendering.InMobiAdActivity" android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:hardwareAccelerated="true" />
+                    <receiver android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver" android:enabled="true" android:exported="true" >
+                        <intent-filter>
+                            <action android:name="com.inmobi.share.id" />
+                        </intent-filter>
+                    </receiver>
 
 					<receiver android:name="com.heyzap.sdk.ads.PackageAddedReceiver">
 						<intent-filter>
