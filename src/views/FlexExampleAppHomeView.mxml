@@ -62,25 +62,29 @@
             currentActionObject = InterstitialAd.getInstance();
         }
 
+        private function getEnteredAdTagOrNull():String{
+            return adTagTextInput.text?adTagTextInput.text:null;
+        }
+
         private function onFetchButtonClick():void {
             logConsole.showLine("Fetching...");
-            currentActionObject.fetch();
+            currentActionObject.fetch(getEnteredAdTagOrNull());
         }
 
         private function onShowButtonClick():void {
             logConsole.showLine("Showing...");
-            currentActionObject.show();
+            currentActionObject.show(getEnteredAdTagOrNull());
         }
 
         private function onAvailableButtonClick():void {
-            logConsole.showLine("Available? result: " + currentActionObject.isAvailable());
+            logConsole.showLine("Available? result: " + currentActionObject.isAvailable(getEnteredAdTagOrNull()));
         }
 
         /// Banners
 
         private function onShowBannerButtonClick():void {
             var position:String = bannerTopRadioButton.selected ? BannerAd.POSITION_TOP : BannerAd.POSITION_BOTTOM;
-            BannerAd.getInstance().show(position);
+            BannerAd.getInstance().show(position, getEnteredAdTagOrNull());
         }
         private function onHideBannerButtonClick():void {
             BannerAd.getInstance().hide();
@@ -147,6 +151,8 @@
             <s:HGroup  width="100%" verticalAlign="middle">
                 <s:Button id="startButton" label="Start" click="onStartButtonClick()"/>
                 <s:Button id="testSuiteButton" label="Test Suite" click="onTestSuiteButtonClick()"/>
+                <s:Label text="Ad tag:"/>
+                <components:FyberTextInput id="adTagTextInput" width="30%"/>
             </s:HGroup>
 
 
