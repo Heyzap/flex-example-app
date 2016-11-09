@@ -13,6 +13,7 @@
 
     <fx:Script>
 		<![CDATA[
+        import com.heyzap.sdk.ads.BannerFetchOptions;
         import com.heyzap.sdk.ads.HeyzapAds;
         import com.heyzap.sdk.ads.IncentivizedAd;
         import com.heyzap.sdk.ads.InterstitialAd;
@@ -84,7 +85,10 @@
 
         private function onShowBannerButtonClick():void {
             var position:String = bannerTopRadioButton.selected ? BannerAd.POSITION_TOP : BannerAd.POSITION_BOTTOM;
-            BannerAd.getInstance().show(position, getEnteredAdTagOrNull());
+            var opts:BannerFetchOptions = new BannerFetchOptions();
+            opts.admobSize = BannerFetchOptions.ADMOB_SIZE_BANNER;
+            opts.facebookSize = BannerFetchOptions.FACEBOOK_SIZE_FLEXIBLE_WIDTH_HEIGHT_90;
+            BannerAd.getInstance().show(position, getEnteredAdTagOrNull() /*optional tag*/, opts);
         }
         private function onHideBannerButtonClick():void {
             BannerAd.getInstance().hide();
