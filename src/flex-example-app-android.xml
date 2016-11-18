@@ -6,6 +6,7 @@
     <versionNumber>1.0.0</versionNumber>
     <extensions>
         <extensionID>com.heyzap.sdk.extensions</extensionID>
+        <extensionID>com.fyber.playservices</extensionID>
         <extensionID>com.fyber.mediation.adcolony</extensionID>
         <extensionID>com.fyber.mediation.admob</extensionID>
         <extensionID>com.fyber.mediation.applovin</extensionID>
@@ -16,8 +17,6 @@
         <extensionID>com.fyber.mediation.inneractive</extensionID>
         <extensionID>com.fyber.mediation.unityads</extensionID>
         <extensionID>com.fyber.mediation.vungle</extensionID>
-        <extensionID>com.fyber.playservices</extensionID>
-
     </extensions>
 
     <initialWindow>
@@ -126,7 +125,14 @@
                     <activity android:name="com.unity3d.ads.android.view.UnityAdsFullscreenActivity"  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
 
-                    <activity android:name="com.vungle.publisher.FullScreenAdActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+                    <activity android:name="com.vungle.publisher.VideoFullScreenAdActivity"
+                     android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+                     android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+                     <activity android:name="com.vungle.publisher.MraidFullScreenAdActivity"
+                     android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
+                     android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+
 
 					<activity android:name="com.heyzap.sdk.ads.HeyzapInterstitialActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
 					<activity android:name="com.heyzap.sdk.ads.HeyzapIncentivizedActivity" android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" />
@@ -134,6 +140,9 @@
 
 					<!--<activity android:name="com.fyber.ads.ofw.OfferWallActivity" android:configChanges="screenSize|orientation" />-->
 					<service android:name="com.fyber.cache.CacheVideoDownloadService" android:exported="false" />
+					<meta-data
+                        android:name="FYBVideoPlayerOptionCloseButtonDelay"
+                        android:value="3" />
 
 				</application>
 			</manifest>
