@@ -43,6 +43,7 @@
         }
 
         private function onFetchButtonClick():void {
+            logConsole.showLine("fetching " + currentActionObjectString() + " ad with tag: " + getEnteredAdTagOrNull());
             currentActionObject.fetch(getEnteredAdTagOrNull());
         }
 
@@ -52,8 +53,23 @@
             appModel.bannerIsShown = false;
         }
 
+        private function currentActionObjectString():String {
+            if (currentActionObject is InterstitialAd) {
+                return "interstitial";
+            } else if (currentActionObject is VideoAd) {
+                return "video";
+            } else if (currentActionObject is IncentivizedAd) {
+                return "incentivized";
+            } else if (currentActionObject is BannerAd) {
+                return "banner";
+            } else {
+                return "unknown";
+            }
+        }
+
         private function onShowButtonClick():void {
-            if (currentActionObject is  BannerAd) {
+            logConsole.showLine("showing " + currentActionObjectString() + " ad with tag: " + getEnteredAdTagOrNull());
+            if (currentActionObject is BannerAd) {
                 currentActionObject.show(bannerPositionTopRadioButton.selected?BannerAd.POSITION_TOP:BannerAd.POSITION_BOTTOM,getEnteredAdTagOrNull());
                 appModel.bannerIsShown = true;
             } else if (currentActionObject is  IncentivizedAd) {

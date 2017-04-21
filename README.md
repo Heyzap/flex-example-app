@@ -7,16 +7,16 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 
 This sample app project is currently using the following SDK versions:
 
-- Heyzap SDK 9.3.0
-- AdColony SDK 2.0.9
-- AdMob SDK 7.4.1
-- AppLovin SDK 1.0.10
-- Chartboost iOS SDK 5.5.3
-- Chartboost Android SDK 5.5.3
-- Facebook Audience Network SDK 4.3.0
-- UnityAds SDK 1.5.8
-- Vungle ANE 2.4.4
-- InMobi ANE SDK 2.1.1 ( 5.2.0 iOS SDK and 5.2.1 Android SDK ) 
+- Heyzap AIR SDK 9.10.0
+- AdColony AIR SDK 3.1.0 ( 3.1.1 iOS SDK and 3.1.2 Android SDK )
+- AdMob iOS SDK 7.18.0 from [Heyzap](https://github.com/Heyzap/ios-admob-ane)
+- AdMob Android SDK via Google Play Services 8.3.0 & support-v4 24.2.0 from [Heyzap](https://github.com/Heyzap/google-play-services-ane)
+- AppLovin AIR SDK 1.1.9 ( 3.1.6 iOS SDK and 6.1.4 Android SDK )
+- Chartboost AIR SDK 6.5.0 ( 6.4.7 iOS SDK and 6.4.2 Android SDK )
+- Facebook Audience Network AIR SDK from [Heyzap](https://github.com/Heyzap/facebook-audience-network-ane) ( 4.22.0 iOS SDK and 4.20.0 Android SDK )
+- UnityAds AIR SDK from [Heyzap](https://github.com/Heyzap/unityads-ane) ( 2.1.0 iOS SDK and 2.1.0 Android SDK )
+- Vungle ANE 3.0.7 ( 4.0.9 iOS SDK and 4.0.3 Android SDK )
+- InMobi ANE SDK 2.1.1 ( 5.2.0 iOS SDK and 5.2.1 Android SDK )
 
 To update the Heyzap SDK, simply download our [latest SDK](https://developers.heyzap.com/sdk/download?platform=air),
 extract the `.zip` file, and replace `libs/HeyzapAds.ane` with the newer version. Do the same for all other SDKs included in the project by downloading the latest supported versions of each (downloads can be found [here](https://developers.heyzap.com/docs/ane_setup_and_requirements).
@@ -35,7 +35,7 @@ Setup the project in your IDE, add the appropriate libraries, connect your devic
 ## Setting up the project
 
 1. Import the project to your IDE as a Flex project.
-    - Select Adobe Air+Flex SDK. This test application has been tested with Flex 4.6 and Adobe Air 19.
+    - Select Adobe Air+Flex SDK. This test application has been tested with Flex 4.6 and Adobe Air 25.
 1. Set the application descriptor to `flex-example-app-ios.xml` for iOS or `flex-example-app-android.xml` for Android (located in the `src/` folder).
 1. Set "FlexExampleApp" as the main `.mxml` file for the project.
 1. Open `FlexExampleApp.mxml` and change `<APP_ID>` in the call to `HeyzapAds.getInstance().start` to your own publisher ID, which can be found on the [Heyzap docs](https://developers.heyzap.com/docs/ane_setup_and_requirements).
@@ -50,11 +50,9 @@ Further information on the Heyzap SDK can be found at https://developers.heyzap.
 ## Known problems
 
 - Compilation failed while executing : ld64. Read here: https://forums.adobe.com/thread/1686169
+  - Summary: replace the `ld64` linker executable at `{AIR_SDK}/lib/aot/bin/ld64/` by copying `/usr/bin/ld` to that directory and renaming it `ld64`
 
-- Conflicts with libraries. If you have selected `google-play-services.ane` don't add any additional
-libraries like `com.vungle.extensions.android.GooglePlayServices.ane`. We use Vungle's GooglePlayServices.ane to avoid conflicts.
-Internal java libraries can confict too, like `android-support-v4.jar` which is present in Facebook's ANE and Vungle's `AndroidSupportLib.ane`. We have repacked the original
-`Facebook.ane` and moved it to the `android-libs/` folder to avoid conflicts. The original Facebook ANE is used for iOS as it avoids this conflict.
+- Conflicts with libraries. Only use one ANE that includes Google Play Services, for instance. We provide one, but some plugins embed GPS into their ANE in an un-removable fashion. Other Java libraries can confict too, like `android-support-v4.jar`, which is also included in our `GooglePlayServices.ane`.
 
 - Error java.lang.OutOfMemoryError: GC overhead limit exceeded. This error appears while packing Android library. 
 Increase the memory allocated for Java and the Adobe Air/Flex framework. Open `jvm.config` at `$AIR_BASE_DIR/bin` and set `java.args` with the line `java.args=-Xmx1024m -Xms512m -Dsun.io.useCanonCaches=false` instead of what is there. (`-Xmx` sets the max ram allocated for the Java runtime, and `-Xms` is the minimum.)
