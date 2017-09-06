@@ -9,6 +9,7 @@
 
         <extensionID>com.heyzap.sdk.extensions.admob</extensionID>
         <extensionID>com.heyzap.sdk.extensions.facebook.audiencenetwork</extensionID>
+        <extensionID>com.heyzap.sdk.extensions.inmobi</extensionID>
         <extensionID>com.heyzap.sdk.extensions.unityads</extensionID>
 
         <extensionID>com.adcolony.airadc.AirAdColony</extensionID>
