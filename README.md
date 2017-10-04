@@ -7,7 +7,7 @@ https://developers.heyzap.com/docs/ane_setup_and_requirements
 
 This sample app project is currently using the following SDK versions:
 
-- Heyzap AIR SDK 9.13.0
+- Heyzap AIR SDK 9.13.4
 - AdColony AIR SDK 3.1.0 ( 3.1.1 iOS SDK and 3.1.2 Android SDK )
 - AdMob iOS SDK 7.18.0 from [Heyzap](https://github.com/Heyzap/ios-admob-ane)
 - AdMob Android SDK via Google Play Services 11.0.4 & support-v4/recyclerview-v7 25.3.1 from [Heyzap](https://github.com/Heyzap/google-play-services-ane)
